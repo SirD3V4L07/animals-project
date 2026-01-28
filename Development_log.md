@@ -1,1 +1,2 @@
 27012026: Setup animal table API, fetching animal table to frontend as JSON. Next step, draw styled html table with animals_tb contents!
+28012026: Added html database data table, next step is installing dotenv, setting up .env files and change db access password. Then, start building basic website structure with placeholder options.
