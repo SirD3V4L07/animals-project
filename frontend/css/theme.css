@@ -1,0 +1,12 @@
+:root {
+    /* Backgrounds */
+    --color-bg-main: #2C2013;
+    --color-bg-accent: #7D6142;
+    
+    /* Accents */
+    --color-accent-1: #557148;
+    --color-accent-2: #E6AD04;
+
+    /* Text */
+    --color-text-main: #E9E6DF;
+}
