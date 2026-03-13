@@ -1,4 +1,4 @@
-fetch("/api/health")
+fetch("/animals")
   .then(res => res.json())
   .then(data => {
     console.log("From API:", data);
@@ -7,7 +7,7 @@ fetch("/api/health")
   
 async function aniBuildTable() {
   let table = document.getElementById("animal-table");
-  const aniAnimalList = await (await fetch("/api/animals")).json();
+  const aniAnimalList = await (await fetch("/animals")).json();
   for (let index = 0; index < aniAnimalList.length; index++) {
     let row = `
       <tr>
