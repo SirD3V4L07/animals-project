@@ -1,7 +1,10 @@
+const path = require("path");
 const express = require('express');
 const pool = require("./db");
 const app = express();
 const PORT = 3000;
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 
 app.get("/animals/", async (req, res) => {
@@ -33,12 +36,7 @@ app.get("/animals/:slug", async (req, res) => {
       return res.status(404).send("Animal not found");
     }
 
-    const animal = result.rows[0];
-
-    res.send(`
-      <h1>${animal.common_name}</h1>
-      <p><em>${animal.scientific_name}</em></p>
-    `);
+    res.render("animal", { animal: result.rows[0] });
 
   } catch (err) {
     console.error(err);
