@@ -5,8 +5,34 @@
 </head>
 <body>
 
-<h1><%= animal.common_name %></h1>
-<p><em><%= animal.scientific_name %></em></p>
+<div class="id">
+    <div class="portrait"></div>
+    <h2><%= animal.common_name %></h2>
+    <p><em><%= animal.scientific_name %></em></p>
+</div>
+
+<div class="taxonomy">
+    <p>Kingdom: <em>Animalia</em></p>
+    <p>Phylum: <em><%= animal.phylum %></em></p>
+    <p>Class: <em><%= animal.class %></em></p>
+    <p>Order: <em><%= animal.order %></em></p>
+    <p>Family: <em><%= animal.family %></em></p>
+    <p>Genus: <em><%= animal.genus %></em></p>
+</div>
+
+<p><em><%= animal.diet %></em></p>
+<p><em><%= animal.legacy_start %></em></p>
+<p><em><%= animal.legacy_end %></em></p>
+
+<div class="stats">
+    <p>Average Weight: <em><%= animal.avg_weight %></em> kg</p>
+    <p>Average Height: <em> </em> cm</p>
+    <p>Average Speed: <em><%= animal.avg_speed %></em> km/h</p>
+    <p>Life Expectancy: <em><%= animal.life_expectancy %></em> years</p>
+</div>
+
+
+
 
 
 </body>

@@ -28,7 +28,7 @@ app.get("/animals/:slug", async (req, res) => {
   try {
 
     const result = await pool.query(
-      "SELECT common_name, scientific_name FROM animals_tb WHERE slug = $1",
+      "SELECT common_name, scientific_name, phylum, \"order\" , \"class\" , family, genus, avg_weight, avg_speed, life_expectancy, legacy_start, legacy_end, diet FROM animals_tb WHERE slug = $1",
       [slug]
     );
 
