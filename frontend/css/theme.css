@@ -1,7 +1,8 @@
 :root {
     /* Backgrounds */
     --color-bg-main: #2C2013;
-    --color-bg-accent: #7D6142;
+    --color-bg-accent: #b6a682;
+    --color-bg-accent-dark: #897e59;
     
     /* Accents */
     --color-accent-1: #557148;

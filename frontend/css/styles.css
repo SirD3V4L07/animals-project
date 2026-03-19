@@ -35,3 +35,30 @@ h1, h2, h3, h4 {
     color: var(--color-text-main);
     font-family: sans-serif;
 }
+
+/*=== Animal page ===*/
+.animal-body {
+    display: flex;
+    background-color: var(--color-bg-accent);
+    width:100%;
+    height:auto;
+}
+
+.left-panel {
+    background-color: var(--color-bg-accent-dark);
+    width:20vw;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    padding:15px;
+}
+
+.main-panel {
+    width:100%;
+    padding:15px;
+}
+
+.portrait {
+    width:180px;
+    height:180px;
+}
