@@ -6,6 +6,7 @@ const PORT = 3000;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static("frontend"));
+app.use(express.static('public'));
 
 
 app.get("/animals/", async (req, res) => {
@@ -29,7 +30,7 @@ app.get("/animals/:slug", async (req, res) => {
   try {
 
     const result = await pool.query(
-      "SELECT common_name, scientific_name, phylum, \"order\" , \"class\" , family, genus, avg_weight, avg_speed, life_expectancy, legacy_start, legacy_end, diet FROM animals_tb WHERE slug = $1",
+      "SELECT common_name, scientific_name , slug , phylum, \"order\" , \"class\" , family, genus, avg_weight, avg_speed, life_expectancy, legacy_start, legacy_end, diet , portrait_attribution FROM animals_tb WHERE slug = $1",
       [slug]
     );
 
