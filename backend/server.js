@@ -9,7 +9,7 @@ app.use(express.static("frontend"));
 app.use(express.static('public'));
 
 
-app.get("/animals/", async (req, res) => {
+app.get("/animals", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM animals_tb");
     res.json(result.rows);
