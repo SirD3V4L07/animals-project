@@ -1,6 +1,13 @@
+body {
+    display: flex;
+    justify-content: center;
+    height:100vh;
+    align-items:center;
+}
+
 #gameboard {
-    width:320px;
-    height:320px;
+    width:960px;
+    height:960px;
     background-color: rgb(135, 222, 147);
     display: flex;
     flex-wrap: wrap;
@@ -9,14 +16,14 @@
 .game-piece {
     border-radius: 100%;
     background-color: rgb(72, 72, 168);
-    height:30px;
-    width:30px;
-    margin:5px;
+    height:100px;
+    width:100px;
+    margin:10px;
 }
 
 .square {
-    width:40px;
-    height:40px;
+    width:120px;
+    height:120px;
     display: flex;
 }
 
