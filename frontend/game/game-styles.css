@@ -1,7 +1,7 @@
 #gameboard {
     width:320px;
     height:320px;
-    background-color: burlywood;
+    background-color: rgb(135, 222, 147);
     display: flex;
     flex-wrap: wrap;
 }
@@ -17,6 +17,13 @@
 .square {
     width:40px;
     height:40px;
-    background-color: cadetblue;
     display: flex;
+}
+
+.odd-square {
+    background-color: #dbd3b3;
+}
+
+.even-square {
+    background-color: #b8b093;
 }
