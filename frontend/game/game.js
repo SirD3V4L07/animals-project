@@ -37,6 +37,7 @@ function addPieceBehavior() {
         piece.addEventListener("click", () => {
             console.log("Game piece was clicked!");
         });
+    
     });
     
 };
