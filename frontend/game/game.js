@@ -25,11 +25,21 @@ function createBoard() {
             } else {
                 square.classList.add('odd-square');
             }
-            toggle = !toggle;
+            toggle = !toggle;            
+
         });
         toggle = !toggle;
     });
+};
+
+function addPieceBehavior() {
+    document.querySelectorAll(".game-piece").forEach(piece => {
+        piece.addEventListener("click", () => {
+            console.log("Game piece was clicked!");
+        });
+    });
     
-}
+};
 
 createBoard();
+addPieceBehavior();
