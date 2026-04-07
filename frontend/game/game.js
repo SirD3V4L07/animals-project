@@ -19,6 +19,8 @@ function createBoard() {
             const square = document.createElement('div');
             square.classList.add('square');
             square.innerHTML = cell;
+            square.setAttribute("x", j);
+            square.setAttribute("y", i);
             gameBoard.append(square);
             if (toggle) {
                 square.classList.add('even-square');
