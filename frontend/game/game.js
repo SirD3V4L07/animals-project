@@ -37,7 +37,10 @@ function createBoard() {
 function addPieceBehavior() {
     document.querySelectorAll(".game-piece").forEach(piece => {
         piece.addEventListener("click", () => {
-            console.log("Game piece was clicked!");
+            const parent = piece.parentElement;
+            const xCoor = parent.getAttribute("x");
+            const yCoor = parent.getAttribute("y");
+            console.log("Game piece was clicked on x:" + xCoor + " y:" + yCoor + " !");
         });
     
     });
