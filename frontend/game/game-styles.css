@@ -39,3 +39,7 @@ body {
 .even-square {
     background-color: #b8b093;
 }
+
+.highlight {
+    background-color: greenyellow;
+}

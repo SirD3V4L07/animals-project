@@ -6,3 +6,4 @@
     Add event listener for click, console log clicked square
     Highlight available squares on clicked square event
     Change position of game piece to clicked square after first click
+08042026: We're at step 3 and apparently It's better to use arrays than querying the DOM all the time, so let's redo that part.

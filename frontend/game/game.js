@@ -41,8 +41,10 @@ function addPieceBehavior() {
             const xCoor = parent.getAttribute("x");
             const yCoor = parent.getAttribute("y");
             console.log("Game piece was clicked on x:" + xCoor + " y:" + yCoor + " !");
-            
-        
+            /*
+            const highlightedSquare = document.querySelector('[x=`${xCoor}`][y="1"]');
+            highlightedSquare.classList.add('highlight');
+            */
         });
     
     });
