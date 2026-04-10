@@ -1,26 +1,28 @@
 const gameBoard = document.querySelector("#gameboard");
-const gamePiece = '<div class="game-piece"></div>'
-
-let boardArray = [
-    [gamePiece,gamePiece,gamePiece,gamePiece,gamePiece,gamePiece,gamePiece,gamePiece],
-    [gamePiece,gamePiece,gamePiece,gamePiece,gamePiece,gamePiece,gamePiece,gamePiece],
+const piece = '<div class="game-piece"></div>';
+let squaresArray = [];
+let piecesArray = [
+    [piece,piece,piece,piece,piece,piece,piece,piece],
+    [piece,piece,piece,piece,piece,piece,piece,piece],
     ['','','','','','','',''],
     ['','','','','','','',''],
     ['','','','','','','',''],
     ['','','','','','','',''],
-    [gamePiece,gamePiece,gamePiece,gamePiece,gamePiece,gamePiece,gamePiece,gamePiece],
-    [gamePiece,gamePiece,gamePiece,gamePiece,gamePiece,gamePiece,gamePiece,gamePiece]
+    [piece,piece,piece,piece,piece,piece,piece,piece],
+    [piece,piece,piece,piece,piece,piece,piece,piece]
 ];
 let toggle = true;
 
 function createBoard() {
-    boardArray.forEach((row, i) => {
-        boardArray[i].forEach((cell, j) => {
+    piecesArray.forEach((row, i) => {
+        squaresArray[i] = [];
+        piecesArray[i].forEach((cell, j) => {
             const square = document.createElement('div');
             square.classList.add('square');
             square.innerHTML = cell;
             square.setAttribute("x", j);
             square.setAttribute("y", i);
+            squaresArray[i][j] = square;
             gameBoard.append(square);
             if (toggle) {
                 square.classList.add('even-square');
@@ -28,7 +30,6 @@ function createBoard() {
                 square.classList.add('odd-square');
             }
             toggle = !toggle;            
-
         });
         toggle = !toggle;
     });
@@ -41,10 +42,8 @@ function addPieceBehavior() {
             const xCoor = parent.getAttribute("x");
             const yCoor = parent.getAttribute("y");
             console.log("Game piece was clicked on x:" + xCoor + " y:" + yCoor + " !");
-            /*
-            const highlightedSquare = document.querySelector('[x=`${xCoor}`][y="1"]');
-            highlightedSquare.classList.add('highlight');
-            */
+            squaresArray[yCoor][xCoor].classList.add('highlight');
+           
         });
     
     });
