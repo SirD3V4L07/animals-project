@@ -1,15 +1,16 @@
 const gameBoard = document.querySelector("#gameboard");
-const piece = '<div class="game-piece"></div>';
+const topPiece = '<div class="top-piece piece"></div>';
+const botPiece = '<div class="bot-piece piece"></div>';
 let squaresArray = [];
 let piecesArray = [
-    [piece,piece,piece,piece,piece,piece,piece,piece],
-    [piece,piece,piece,piece,piece,piece,piece,piece],
+    [topPiece,topPiece,topPiece,topPiece,topPiece,topPiece,topPiece,topPiece],
+    [topPiece,topPiece,topPiece,topPiece,topPiece,topPiece,topPiece,topPiece],
     ['','','','','','','',''],
     ['','','','','','','',''],
     ['','','','','','','',''],
     ['','','','','','','',''],
-    [piece,piece,piece,piece,piece,piece,piece,piece],
-    [piece,piece,piece,piece,piece,piece,piece,piece]
+    [botPiece,botPiece,botPiece,botPiece,botPiece,botPiece,botPiece,botPiece],
+    [botPiece,botPiece,botPiece,botPiece,botPiece,botPiece,botPiece,botPiece]
 ];
 let toggle = true;
 
@@ -18,12 +19,12 @@ function createBoard() {
         squaresArray[i] = [];
         piecesArray[i].forEach((cell, j) => {
             const square = document.createElement('div');
-            square.classList.add('square');
             square.innerHTML = cell;
+            square.classList.add('square');
             square.setAttribute("x", j);
             square.setAttribute("y", i);
             squaresArray[i][j] = square;
-            gameBoard.append(square);
+            gameBoard.append(squaresArray[i][j]);
             if (toggle) {
                 square.classList.add('even-square');
             } else {
@@ -35,14 +36,21 @@ function createBoard() {
     });
 };
 
+function movePiece(x,y) {
+    
+    squaresArray[y][x].classList.toggle('highlight');
+};
+
 function addPieceBehavior() {
-    document.querySelectorAll(".game-piece").forEach(piece => {
+    document.querySelectorAll(".piece").forEach(piece => {
         piece.addEventListener("click", () => {
-            const parent = piece.parentElement;
-            const xCoor = parent.getAttribute("x");
-            const yCoor = parent.getAttribute("y");
+                     
+            /*const yCoor = piecesArray.indexOf(piece);
+            const xCoor = yCoor.indexOf(piece);
+            const pieceType = piece.classList[0];*/
             console.log("Game piece was clicked on x:" + xCoor + " y:" + yCoor + " !");
-            squaresArray[yCoor][xCoor].classList.add('highlight');
+            
+            movePiece(xCoor,yCoor);
            
         });
     

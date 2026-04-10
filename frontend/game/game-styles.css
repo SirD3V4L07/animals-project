@@ -15,7 +15,7 @@ body {
     flex-wrap: wrap;
 }
 
-.game-piece {
+.piece {
     border-radius: 100%;
     background-color: rgb(72, 72, 168);
     width:5vw;
