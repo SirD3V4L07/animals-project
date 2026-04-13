@@ -1,40 +1,33 @@
 const gameBoard = document.querySelector("#gameboard");
-const topPiece = '<div class="top-piece piece"></div>';
-const botPiece = '<div class="bot-piece piece"></div>';
 let boardArray = [];
-let piecesArray = [
-    [topPiece,topPiece,topPiece,topPiece,topPiece,topPiece,topPiece,topPiece],
-    [topPiece,topPiece,topPiece,topPiece,topPiece,topPiece,topPiece,topPiece],
-    ['','','','','','','',''],
-    ['','','','','','','',''],
-    ['','','','','','','',''],
-    ['','','','','','','',''],
-    [botPiece,botPiece,botPiece,botPiece,botPiece,botPiece,botPiece,botPiece],
-    [botPiece,botPiece,botPiece,botPiece,botPiece,botPiece,botPiece,botPiece]
-];
 let toggle = true;
 
 function createBoard() {
-    piecesArray.forEach((row, i) => {
+    for (let i = 0; i < 8; i++) {
         boardArray[i] = [];
-        piecesArray[i].forEach((cell, j) => {
+        for (let j = 0; j < 8; j++) {
+            const piece = document.createElement('div');
+            piece.classList.add('piece');
             const square = document.createElement('div');
-            square.innerHTML = cell;
             square.classList.add('square');
-            squaresArray[i][j] = square;
-            squaresArray[i][j].x = j;
-            squaresArray[i][j].y = i;
-            gameBoard.append(squaresArray[i][j]);
+            boardArray[i][j] = square;
+            square.dataset.x = j;
+            square.dataset.y = i;
+            if ((i < 2)||(i > 5)) {
+                square.appendChild(piece);
+            } 
+            gameBoard.append(boardArray[i][j]);
             if (toggle) {
                 square.classList.add('even-square');
             } else {
                 square.classList.add('odd-square');
             }
-            toggle = !toggle;            
-        });
+            toggle = !toggle;    
+        }
         toggle = !toggle;
-    });
+    };
 };
+
 
 function movePiece(x,y) {
     
