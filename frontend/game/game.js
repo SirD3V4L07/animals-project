@@ -13,34 +13,34 @@ function createBoard() {
             boardArray[i][j] = square;
             square.dataset.x = j;
             square.dataset.y = i;
+            piece.dataset.x = j;
+            piece.dataset.y = i;
             if ((i < 2)||(i > 5)) {
                 square.appendChild(piece);
-            } 
-            gameBoard.append(boardArray[i][j]);
+            }             
             if (toggle) {
                 square.classList.add('even-square');
             } else {
                 square.classList.add('odd-square');
             }
+            gameBoard.append(boardArray[i][j]);
             toggle = !toggle;    
         }
         toggle = !toggle;
     };
 };
 
-
 function movePiece(x,y) {
     
-    squaresArray[y][x].classList.toggle('highlight');
+    boardArray[y][x].classList.toggle('highlight');
 };
 
 function addPieceBehavior() {
     document.querySelectorAll(".piece").forEach(piece => {
-        piece.addEventListener("click", () => {
+        piece.addEventListener("click", (e) => {
                      
-            
-            console.log("Game piece was clicked on x:" + xCoor + " y:" + yCoor + " !");
-            
+            let xCoor = e.currentTarget.dataset.x;
+            let yCoor = e.currentTarget.dataset.y;            
             movePiece(xCoor,yCoor);
            
         });
