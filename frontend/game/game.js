@@ -15,8 +15,12 @@ function createBoard() {
             square.dataset.y = i;
             piece.dataset.x = j;
             piece.dataset.y = i;
-            if ((i < 2)||(i > 5)) {
-                square.appendChild(piece);
+            square.appendChild(piece);
+            if (i < 2) {
+                piece.dataset.player = 'top';
+            } 
+            if (i > 5) {
+                piece.dataset.player = 'bottom';
             }             
             if (toggle) {
                 square.classList.add('even-square');
@@ -30,23 +34,37 @@ function createBoard() {
     };
 };
 
-function movePiece(x,y) {
+function movePiece(x,y,piece) {
+    document.querySelectorAll(".highlight").forEach(square => {
+        square.classList.remove("highlight");
+    });
+    if (piece.dataset.player == 'top') {
+        let validSquareY = y + 1;
+    } else if (piece.dataset.player == 'bottom') {
+        let validSquareY = y - 1;
+    };
+    boardArray[validSquareY][x].classList.toggle('highlight');
     
-    boardArray[y][x].classList.toggle('highlight');
 };
 
 function addPieceBehavior() {
     document.querySelectorAll(".piece").forEach(piece => {
         piece.addEventListener("click", (e) => {
                      
-            let xCoor = e.currentTarget.dataset.x;
-            let yCoor = e.currentTarget.dataset.y;            
-            movePiece(xCoor,yCoor);
-           
+            boardArray[piece.dataset.y][piece.dataset.x].clicked = true;
+            piece.dataset.clicked = true;
+            let x = Number(e.currentTarget.dataset.x);
+            let y = Number(e.currentTarget.dataset.y);
+
+            movePiece(x,y,piece);
+            document.querySelectorAll(".highlight").forEach(square => {
+                square.addEventListener("click", (e) => {
+                    e.currentTarget.classList.toggle('highlight');
+                    e.currentTarget.appendChild(piece);
+                });
+            });
         });
-    
     });
-    
 };
 
 createBoard();

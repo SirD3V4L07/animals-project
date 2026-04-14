@@ -42,4 +42,5 @@ body {
 
 .highlight {
     background-color: greenyellow;
+    cursor:pointer;
 }
