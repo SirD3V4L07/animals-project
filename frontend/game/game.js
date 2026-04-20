@@ -15,12 +15,14 @@ function createBoard() {
             square.dataset.y = i;
             piece.dataset.x = j;
             piece.dataset.y = i;
-            square.appendChild(piece);
+            
             if (i < 2) {
                 piece.dataset.player = 'top';
+                square.appendChild(piece);
             } 
             if (i > 5) {
                 piece.dataset.player = 'bottom';
+                square.appendChild(piece);
             }             
             if (toggle) {
                 square.classList.add('even-square');
@@ -35,16 +37,16 @@ function createBoard() {
 };
 
 function movePiece(x,y,piece) {
+    let validSquareY = 0;
     document.querySelectorAll(".highlight").forEach(square => {
         square.classList.remove("highlight");
     });
     if (piece.dataset.player == 'top') {
-        let validSquareY = y + 1;
+         validSquareY = y + 1;
     } else if (piece.dataset.player == 'bottom') {
-        let validSquareY = y - 1;
+         validSquareY = y - 1;
     };
-    boardArray[validSquareY][x].classList.toggle('highlight');
-    
+    boardArray[validSquareY][x].classList.add('highlight');
 };
 
 function addPieceBehavior() {
@@ -59,7 +61,7 @@ function addPieceBehavior() {
             movePiece(x,y,piece);
             document.querySelectorAll(".highlight").forEach(square => {
                 square.addEventListener("click", (e) => {
-                    e.currentTarget.classList.toggle('highlight');
+                    e.currentTarget.classList.remove('highlight');
                     e.currentTarget.appendChild(piece);
                 });
             });
