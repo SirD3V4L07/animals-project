@@ -8,3 +8,4 @@
     Change position of game piece to clicked square after first click
 08042026: We're at step 3 and apparently It's better to use arrays than querying the DOM all the time, so let's redo that part.
 13042026: At step 4 now. I might still be querying the DOM too much rather than sticking to manipulating the array. Also, I need to clear all highlights when clicking outside active highlights, as well as continuing to move forward after first step. I need to try redoing all logic minimizing DOM queries and using array and properties to check and manipulate states. The DOM should only ever paint the state saved as logic.
+27042026: Next session, make it so all squares have click listeners instead if only when they're highlighted, but condition what happens when clicked to only if they're highlighted. If the listener is conditioned, it never gets added before movePiece.

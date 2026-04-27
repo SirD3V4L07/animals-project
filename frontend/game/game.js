@@ -1,6 +1,7 @@
 const gameBoard = document.querySelector("#gameboard");
 let boardArray = [];
 let toggle = true;
+let selectedPiece = null;
 
 function createBoard() {
     for (let i = 0; i < 8; i++) {
@@ -52,19 +53,20 @@ function movePiece(x,y,piece) {
 function addPieceBehavior() {
     document.querySelectorAll(".piece").forEach(piece => {
         piece.addEventListener("click", (e) => {
-                     
+            selectedPiece = e.currentTarget;         
             boardArray[piece.dataset.y][piece.dataset.x].clicked = true;
             piece.dataset.clicked = true;
             let x = Number(e.currentTarget.dataset.x);
             let y = Number(e.currentTarget.dataset.y);
 
             movePiece(x,y,piece);
-            document.querySelectorAll(".highlight").forEach(square => {
+            
+        });
+    });
+    document.querySelectorAll(".highlight").forEach(square => {
                 square.addEventListener("click", (e) => {
                     e.currentTarget.classList.remove('highlight');
-                    e.currentTarget.appendChild(piece);
-                });
-            });
+                    e.currentTarget.appendChild(selectedPiece);
         });
     });
 };
