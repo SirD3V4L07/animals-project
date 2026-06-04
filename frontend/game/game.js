@@ -11,7 +11,6 @@ function createBoard() {
             piece.classList.add('piece');
             const square = document.createElement('div');
             square.classList.add('square');
-            boardArray[i][j] = square;
             square.dataset.x = j;
             square.dataset.y = i;
             piece.dataset.x = j;
@@ -20,17 +19,19 @@ function createBoard() {
             if (i < 2) {
                 piece.dataset.player = 'top';
                 square.appendChild(piece);
+                boardArray[i][j] = piece;
             } 
             if (i > 5) {
                 piece.dataset.player = 'bottom';
                 square.appendChild(piece);
+                boardArray[i][j] = piece;
             }             
             if (toggle) {
                 square.classList.add('even-square');
             } else {
                 square.classList.add('odd-square');
             }
-            gameBoard.append(boardArray[i][j]);
+            gameBoard.append(square);
             toggle = !toggle;    
         }
         toggle = !toggle;
