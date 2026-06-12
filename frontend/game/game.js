@@ -1,12 +1,29 @@
 const gameBoard = document.querySelector("#gameboard");
-let boardArray = [];
+let {} = {
+    xCoordinate: null,
+    yCoordinate: null,
+    player: null,
+    highlight: false,
+    piece: null
+};
+let boardArray = 
+[[{},{},{},{},{},{},{},{}],
+[{},{},{},{},{},{},{},{}],
+[{},{},{},{},{},{},{},{}],
+[{},{},{},{},{},{},{},{}],
+[{},{},{},{},{},{},{},{}],
+[{},{},{},{},{},{},{},{}],
+[{},{},{},{},{},{},{},{}],
+[{},{},{},{},{},{},{},{}]];
 let toggle = true;
 let selectedPiece = null;
 
 function createBoard() {
     for (let i = 0; i < 8; i++) {
-        boardArray[i] = [];
+        
         for (let j = 0; j < 8; j++) {
+            
+            //Create squares and pieces
             const piece = document.createElement('div');
             piece.classList.add('piece');
             const square = document.createElement('div');
@@ -15,17 +32,20 @@ function createBoard() {
             square.dataset.y = i;
             piece.dataset.x = j;
             piece.dataset.y = i;
-            
+
+            //Register initial piece positions
             if (i < 2) {
-                piece.dataset.player = 'top';
+                boardArray[i][j].player = 'top';
                 square.appendChild(piece);
-                boardArray[i][j] = piece;
+                boardArray[i][j].piece = piece;
             } 
             if (i > 5) {
-                piece.dataset.player = 'bottom';
+                boardArray[i][j].player = 'bottom';
                 square.appendChild(piece);
-                boardArray[i][j] = piece;
-            }             
+                boardArray[i][j].piece = piece;
+            }
+            
+            //Define square styles to make checkered pattern
             if (toggle) {
                 square.classList.add('even-square');
             } else {
@@ -37,6 +57,7 @@ function createBoard() {
         toggle = !toggle;
     };
 };
+
 
 function movePiece(x,y,piece) {
     let validSquareY = 0;
@@ -60,10 +81,11 @@ function addPieceBehavior() {
             let x = Number(e.currentTarget.dataset.x);
             let y = Number(e.currentTarget.dataset.y);
 
-            movePiece(x,y,piece);
+            
             
         });
     });
+    
     document.querySelectorAll(".highlight").forEach(square => {
                 square.addEventListener("click", (e) => {
                     e.currentTarget.classList.remove('highlight');
