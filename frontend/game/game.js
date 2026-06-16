@@ -35,16 +35,22 @@ function createBoard() {
 
             //Register initial piece positions
             if (i < 2) {
-                square.appendChild(piece);
-                boardArray[i][j].piece = piece;
+                boardArray[i][j].piece = piece;                
                 boardArray[i][j].piece.player = 'top';
+                
             } 
             if (i > 5) {
-                square.appendChild(piece);
-                boardArray[i][j].piece = piece;
+                boardArray[i][j].piece = piece;                
                 boardArray[i][j].piece.player = 'bottom';
+                
+            }
+
+            if (boardArray[i][j].piece != null) {
+                square.appendChild(boardArray[i][j].piece);                
             }
             
+            
+
             //Define square styles to make checkered pattern
             if (toggle) {
                 square.classList.add('even-square');
