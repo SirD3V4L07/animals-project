@@ -35,14 +35,14 @@ function createBoard() {
 
             //Register initial piece positions
             if (i < 2) {
-                boardArray[i][j].player = 'top';
                 square.appendChild(piece);
                 boardArray[i][j].piece = piece;
+                boardArray[i][j].piece.player = 'top';
             } 
             if (i > 5) {
-                boardArray[i][j].player = 'bottom';
                 square.appendChild(piece);
                 boardArray[i][j].piece = piece;
+                boardArray[i][j].piece.player = 'bottom';
             }
             
             //Define square styles to make checkered pattern
