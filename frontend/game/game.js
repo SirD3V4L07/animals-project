@@ -28,28 +28,24 @@ function createBoard() {
             piece.classList.add('piece');
             const square = document.createElement('div');
             square.classList.add('square');
-            square.dataset.x = j;
-            square.dataset.y = i;
-            piece.dataset.x = j;
-            piece.dataset.y = i;
 
             //Register initial piece positions
             if (i < 2) {
                 boardArray[i][j].piece = piece;                
                 boardArray[i][j].piece.player = 'top';
-                
+                boardArray[i][j].piece.x = j;
+                boardArray[i][j].piece.y = i;
             } 
             if (i > 5) {
                 boardArray[i][j].piece = piece;                
                 boardArray[i][j].piece.player = 'bottom';
-                
+                boardArray[i][j].piece.x = j;
+                boardArray[i][j].piece.y = i;
             }
 
             if (boardArray[i][j].piece != null) {
                 square.appendChild(boardArray[i][j].piece);                
             }
-            
-            
 
             //Define square styles to make checkered pattern
             if (toggle) {
@@ -82,13 +78,10 @@ function addPieceBehavior() {
     document.querySelectorAll(".piece").forEach(piece => {
         piece.addEventListener("click", (e) => {
             selectedPiece = e.currentTarget;         
-            boardArray[piece.dataset.y][piece.dataset.x].clicked = true;
+            boardArray[piece.dataset.y][piece.dataset.x].piece.clicked = true;
             piece.dataset.clicked = true;
             let x = Number(e.currentTarget.dataset.x);
             let y = Number(e.currentTarget.dataset.y);
-
-            
-            
         });
     });
     
@@ -101,4 +94,14 @@ function addPieceBehavior() {
 };
 
 createBoard();
-addPieceBehavior();
+//addPieceBehavior();
+
+document.querySelectorAll(".piece").forEach(piece => {
+        piece.addEventListener("click", (e) => {
+            selectedPiece = e.currentTarget;         
+            //boardArray[piece.y][piece.x].piece.clicked = true;
+            piece.clicked = true;
+            let x = Number(e.currentTarget.dataset.x);
+            let y = Number(e.currentTarget.dataset.y);
+        });
+    });
