@@ -28,7 +28,10 @@ function createBoard() {
             piece.classList.add('piece');
             const square = document.createElement('div');
             square.classList.add('square');
-
+            boardArray[i][j] = square;
+            boardArray[i][j].x = j;
+            boardArray[i][j].y = i;
+            
             //Register initial piece positions
             if (i < 2) {
                 boardArray[i][j].piece = piece;                
@@ -53,14 +56,15 @@ function createBoard() {
             } else {
                 square.classList.add('odd-square');
             }
-            gameBoard.append(square);
+            
+            gameBoard.append(boardArray[i][j]);
             toggle = !toggle;    
         }
         toggle = !toggle;
     };
 };
 
-
+/*
 function movePiece(x,y,piece) {
     let validSquareY = 0;
     document.querySelectorAll(".highlight").forEach(square => {
@@ -73,7 +77,9 @@ function movePiece(x,y,piece) {
     };
     boardArray[validSquareY][x].classList.add('highlight');
 };
+*/
 
+/*
 function addPieceBehavior() {
     document.querySelectorAll(".piece").forEach(piece => {
         piece.addEventListener("click", (e) => {
@@ -92,16 +98,18 @@ function addPieceBehavior() {
         });
     });
 };
+*/
+
+function checkMoves() {
+    //boardArray[currentPosition + 1][currentPosition];
+};
 
 createBoard();
-//addPieceBehavior();
 
 document.querySelectorAll(".piece").forEach(piece => {
-        piece.addEventListener("click", (e) => {
-            selectedPiece = e.currentTarget;         
-            //boardArray[piece.y][piece.x].piece.clicked = true;
+        piece.addEventListener("click", (e) => {    
             piece.clicked = true;
-            let x = Number(e.currentTarget.dataset.x);
-            let y = Number(e.currentTarget.dataset.y);
+            let square = boardArray[piece.y][piece.x];
+            //Pass current square and piece to function which will check viable moves
         });
     });
