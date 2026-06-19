@@ -111,5 +111,13 @@ document.querySelectorAll(".piece").forEach(piece => {
             piece.clicked = true;
             let square = boardArray[piece.y][piece.x];
             //Pass current square and piece to function which will check viable moves
+            for (let i = piece.y - 1; i <= piece.y + 1; i++) {
+                for (let j = piece.x - 1; j <= piece.x + 1; j++) {
+                    if ((boardArray[i][j] != undefined) && (boardArray[i][j].piece == undefined)) {
+                        console.log("Hello");
+                        boardArray[i][j].classList.toggle('highlight');
+                    }
+                }
+            }
         });
     });
