@@ -36,15 +36,18 @@ function createBoard() {
             if (i < 2) {
                 boardArray[i][j].piece = piece;                
                 boardArray[i][j].piece.player = 'top';
+                boardArray[i][j].piece.clicked = false;
                 boardArray[i][j].piece.x = j;
                 boardArray[i][j].piece.y = i;
             } 
             if (i > 5) {
                 boardArray[i][j].piece = piece;                
                 boardArray[i][j].piece.player = 'bottom';
+                boardArray[i][j].piece.clicked = false;
                 boardArray[i][j].piece.x = j;
                 boardArray[i][j].piece.y = i;
             }
+            
 
             if (boardArray[i][j].piece != null) {
                 square.appendChild(boardArray[i][j].piece);                
@@ -108,16 +111,30 @@ createBoard();
 
 document.querySelectorAll(".piece").forEach(piece => {
         piece.addEventListener("click", (e) => {    
-            piece.clicked = true;
+            
             let square = boardArray[piece.y][piece.x];
-            //Pass current square and piece to function which will check viable moves
+            //Unclick all current clicked pieces
+            for (let i = 0; i < 8; i++) {                    
+                    for (let j = 0; j < 8; j++) {
+                        if (boardArray[i][j].piece != undefined && boardArray[i][j].piece.clicked == true) {
+                            boardArray[i][j].piece.clicked = false;                            
+                        }
+                        
+                        boardArray[i][j].classList.remove('highlight');
+                    }    
+            }        
+
+            //Check viable moves and highlight them
             for (let i = piece.y - 1; i <= piece.y + 1; i++) {
                 for (let j = piece.x - 1; j <= piece.x + 1; j++) {
                     if ((boardArray[i] != undefined) && (boardArray[i][j] != undefined) && (boardArray[i][j].piece == undefined)) {
-                        console.log("Hello");
+                        
                         boardArray[i][j].classList.toggle('highlight');
+                        
                     }
                 }
             }
+            piece.clicked = true;
+            
         });
     });
