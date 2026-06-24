@@ -110,31 +110,46 @@ function checkMoves() {
 createBoard();
 
 document.querySelectorAll(".piece").forEach(piece => {
-        piece.addEventListener("click", (e) => {    
-            
-            let square = boardArray[piece.y][piece.x];
-            //Unclick all current clicked pieces
-            for (let i = 0; i < 8; i++) {                    
-                    for (let j = 0; j < 8; j++) {
-                        if (boardArray[i][j].piece != undefined && boardArray[i][j].piece.clicked == true) {
-                            boardArray[i][j].piece.clicked = false;                            
-                        }
-                        
-                        boardArray[i][j].classList.remove('highlight');
-                    }    
-            }        
-
-            //Check viable moves and highlight them
-            for (let i = piece.y - 1; i <= piece.y + 1; i++) {
-                for (let j = piece.x - 1; j <= piece.x + 1; j++) {
-                    if ((boardArray[i] != undefined) && (boardArray[i][j] != undefined) && (boardArray[i][j].piece == undefined)) {
-                        
-                        boardArray[i][j].classList.toggle('highlight');
-                        
+    piece.addEventListener("click", (e) => {    
+        
+        let square = boardArray[piece.y][piece.x];
+        //Unclick all current clicked pieces
+        for (let i = 0; i < 8; i++) {                    
+                for (let j = 0; j < 8; j++) {
+                    if (boardArray[i][j].piece != undefined && boardArray[i][j].piece.clicked == true) {
+                        boardArray[i][j].piece.clicked = false;                            
                     }
+                    
+                    boardArray[i][j].classList.remove('highlight');
+                }    
+        }        
+
+        //Check viable moves and highlight them
+        for (let i = piece.y - 1; i <= piece.y + 1; i++) {
+            for (let j = piece.x - 1; j <= piece.x + 1; j++) {
+                if ((boardArray[i] != undefined) && (boardArray[i][j] != undefined) && (boardArray[i][j].piece == undefined)) {
+                    
+                    boardArray[i][j].classList.add('highlight');
+                    
                 }
             }
-            piece.clicked = true;
-            
-        });
+        }
+        piece.clicked = true;
+        
     });
+});
+
+document.querySelectorAll(".square").forEach(square => {
+    square.addEventListener("click", (e) => { 
+        for (let i = 0; i < 8; i++) {                    
+            for (let j = 0; j < 8; j++) {
+                if (boardArray[i][j].classList == 'highlight') {
+                    boardArray[i][j].classList.remove('highlight');   
+                    console.log("Hello");                       
+                }
+                
+                
+            }    
+        }        
+    });
+});
