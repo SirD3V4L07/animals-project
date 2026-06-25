@@ -109,9 +109,24 @@ function checkMoves() {
 
 createBoard();
 
+document.querySelectorAll(".square").forEach(square => {
+    square.addEventListener("click", (e) => { 
+        //Deselect current highlights if clicked on empty square
+        if (square.piece == undefined || square.piece.clicked != false) {
+            for (let i = 0; i < 8; i++) {                    
+                for (let j = 0; j < 8; j++) {
+                    if (boardArray[i][j].classList.contains('highlight')) {
+                        boardArray[i][j].classList.remove('highlight');   
+                        console.log("Hello");                       
+                    }
+                }    
+            }   
+        }     
+    });
+});
+
 document.querySelectorAll(".piece").forEach(piece => {
     piece.addEventListener("click", (e) => {    
-        
         let square = boardArray[piece.y][piece.x];
         //Unclick all current clicked pieces
         for (let i = 0; i < 8; i++) {                    
@@ -136,20 +151,6 @@ document.querySelectorAll(".piece").forEach(piece => {
         }
         piece.clicked = true;
         
-    });
+    }); 
 });
 
-document.querySelectorAll(".square").forEach(square => {
-    square.addEventListener("click", (e) => { 
-        for (let i = 0; i < 8; i++) {                    
-            for (let j = 0; j < 8; j++) {
-                if (boardArray[i][j].classList == 'highlight') {
-                    boardArray[i][j].classList.remove('highlight');   
-                    console.log("Hello");                       
-                }
-                
-                
-            }    
-        }        
-    });
-});
