@@ -112,12 +112,12 @@ createBoard();
 document.querySelectorAll(".square").forEach(square => {
     square.addEventListener("click", (e) => { 
         //Deselect current highlights if clicked on empty square
-        if (square.piece == undefined || square.piece.clicked != false) {
+        if (square.piece == undefined) {
             for (let i = 0; i < 8; i++) {                    
                 for (let j = 0; j < 8; j++) {
                     if (boardArray[i][j].classList.contains('highlight')) {
                         boardArray[i][j].classList.remove('highlight');   
-                        console.log("Hello");                       
+                        console.log("Square condition trigger");                       
                     }
                 }    
             }   
@@ -128,28 +128,29 @@ document.querySelectorAll(".square").forEach(square => {
 document.querySelectorAll(".piece").forEach(piece => {
     piece.addEventListener("click", (e) => {    
         let square = boardArray[piece.y][piece.x];
-        //Unclick all current clicked pieces
+        //Remove previous highlights
         for (let i = 0; i < 8; i++) {                    
                 for (let j = 0; j < 8; j++) {
-                    if (boardArray[i][j].piece != undefined && boardArray[i][j].piece.clicked == true) {
-                        boardArray[i][j].piece.clicked = false;                            
-                    }
-                    
                     boardArray[i][j].classList.remove('highlight');
+                    console.log("Piece clean condition trigger"); 
                 }    
         }        
+        
 
         //Check viable moves and highlight them
-        for (let i = piece.y - 1; i <= piece.y + 1; i++) {
-            for (let j = piece.x - 1; j <= piece.x + 1; j++) {
-                if ((boardArray[i] != undefined) && (boardArray[i][j] != undefined) && (boardArray[i][j].piece == undefined)) {
-                    
-                    boardArray[i][j].classList.add('highlight');
-                    
+        if (piece.clicked == false) {
+            for (let i = piece.y - 1; i <= piece.y + 1; i++) {
+                for (let j = piece.x - 1; j <= piece.x + 1; j++) {
+                    if ((boardArray[i] != undefined) && (boardArray[i][j] != undefined) && (boardArray[i][j].piece == undefined)) {
+                        boardArray[i][j].classList.add('highlight');
+                        console.log("Piece highlight condition trigger"); 
+                        piece.clicked = true;
+                    }
                 }
             }
-        }
-        piece.clicked = true;
+        } else {piece.clicked = false};
+
+        
         
     }); 
 });
