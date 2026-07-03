@@ -72,6 +72,19 @@ function squareClickHandler() {
     document.querySelectorAll(".square").forEach(square => {
         square.addEventListener("click", (e) => { 
             if (square.piece == undefined) {
+                if (square.classList.contains('highlight')) {
+                    for (let i = 0; i < 8; i++) {                    
+                        for (let j = 0; j < 8; j++) {
+                            if (boardArray[i][j].piece != null && boardArray[i][j].piece.clicked == true) {
+                                square.piece = boardArray[i][j].piece;
+                                boardArray[i][j].piece = "";
+                                console.log("Piece move condition triggered");
+                                console.log("Empty piece: " + boardArray[i][j].piece);
+                                
+                            }
+                        }    
+                    }
+                }   
                 for (let i = 0; i < 8; i++) {                    
                     for (let j = 0; j < 8; j++) {
                         if (boardArray[i][j].classList.contains('highlight')) {
@@ -79,8 +92,8 @@ function squareClickHandler() {
                             console.log("Square condition trigger");                       
                         }
                     }    
-                }   
-            }     
+                }
+            };    
         });
     });
 }
@@ -110,9 +123,6 @@ function pieceClickHandler() {
                     }
                 }
             } else {piece.clicked = false};
-
-            
-            
         }); 
     });
 }
