@@ -67,60 +67,58 @@ function createBoard() {
     };
 };
 
+function squareClickHandler() {
+    //Deselect current highlights if clicked on empty square
+    document.querySelectorAll(".square").forEach(square => {
+        square.addEventListener("click", (e) => { 
+            if (square.piece == undefined) {
+                for (let i = 0; i < 8; i++) {                    
+                    for (let j = 0; j < 8; j++) {
+                        if (boardArray[i][j].classList.contains('highlight')) {
+                            boardArray[i][j].classList.remove('highlight');   
+                            console.log("Square condition trigger");                       
+                        }
+                    }    
+                }   
+            }     
+        });
+    });
+}
+
+function pieceClickHandler() {
+    document.querySelectorAll(".piece").forEach(piece => {
+        piece.addEventListener("click", (e) => {    
+            let square = boardArray[piece.y][piece.x];
+            //Remove previous highlights
+            for (let i = 0; i < 8; i++) {                    
+                    for (let j = 0; j < 8; j++) {
+                        boardArray[i][j].classList.remove('highlight');
+                        if (boardArray[i][j].piece != undefined) {
+                            boardArray[i][j].piece.clicked = false; 
+                        }
+                    }    
+            }        
+
+            //Check viable moves and highlight them
+            if (piece.clicked == false) {
+                for (let i = piece.y - 1; i <= piece.y + 1; i++) {
+                    for (let j = piece.x - 1; j <= piece.x + 1; j++) {
+                        if ((boardArray[i] != undefined) && (boardArray[i][j] != undefined) && (boardArray[i][j].piece == undefined)) {
+                            boardArray[i][j].classList.add('highlight'); 
+                            piece.clicked = true;
+                        }
+                    }
+                }
+            } else {piece.clicked = false};
+
+            
+            
+        }); 
+    });
+}
 
 
 
 createBoard();
-
-
-//Deselect current highlights if clicked on empty square
-document.querySelectorAll(".square").forEach(square => {
-    square.addEventListener("click", (e) => { 
-        if (square.piece == undefined) {
-            for (let i = 0; i < 8; i++) {                    
-                for (let j = 0; j < 8; j++) {
-                    if (boardArray[i][j].classList.contains('highlight')) {
-                        boardArray[i][j].classList.remove('highlight');   
-                        console.log("Square condition trigger");                       
-                    }
-                }    
-            }   
-        }     
-    });
-});
-
-document.querySelectorAll(".piece").forEach(piece => {
-    piece.addEventListener("click", (e) => {    
-        let square = boardArray[piece.y][piece.x];
-        //Remove previous highlights
-        for (let i = 0; i < 8; i++) {                    
-                for (let j = 0; j < 8; j++) {
-                    boardArray[i][j].classList.remove('highlight');
-                    
-                    if (boardArray[i][j].piece != undefined) {
-                        boardArray[i][j].piece.clicked = false;
-                        console.log("Current piece click condition: " + boardArray[i][j].piece.clicked); 
-                    }
-                    console.log("Piece clean condition trigger."); 
-                }    
-        }        
-        
-
-        //Check viable moves and highlight them
-        if (piece.clicked == false) {
-            for (let i = piece.y - 1; i <= piece.y + 1; i++) {
-                for (let j = piece.x - 1; j <= piece.x + 1; j++) {
-                    if ((boardArray[i] != undefined) && (boardArray[i][j] != undefined) && (boardArray[i][j].piece == undefined)) {
-                        boardArray[i][j].classList.add('highlight');
-                        console.log("Piece highlight condition trigger"); 
-                        piece.clicked = true;
-                    }
-                }
-            }
-        } else {piece.clicked = false};
-
-        
-        
-    }); 
-});
-
+squareClickHandler();
+pieceClickHandler();
