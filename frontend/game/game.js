@@ -67,51 +67,15 @@ function createBoard() {
     };
 };
 
-/*
-function movePiece(x,y,piece) {
-    let validSquareY = 0;
-    document.querySelectorAll(".highlight").forEach(square => {
-        square.classList.remove("highlight");
-    });
-    if (piece.dataset.player == 'top') {
-         validSquareY = y + 1;
-    } else if (piece.dataset.player == 'bottom') {
-         validSquareY = y - 1;
-    };
-    boardArray[validSquareY][x].classList.add('highlight');
-};
-*/
 
-/*
-function addPieceBehavior() {
-    document.querySelectorAll(".piece").forEach(piece => {
-        piece.addEventListener("click", (e) => {
-            selectedPiece = e.currentTarget;         
-            boardArray[piece.dataset.y][piece.dataset.x].piece.clicked = true;
-            piece.dataset.clicked = true;
-            let x = Number(e.currentTarget.dataset.x);
-            let y = Number(e.currentTarget.dataset.y);
-        });
-    });
-    
-    document.querySelectorAll(".highlight").forEach(square => {
-                square.addEventListener("click", (e) => {
-                    e.currentTarget.classList.remove('highlight');
-                    e.currentTarget.appendChild(selectedPiece);
-        });
-    });
-};
-*/
 
-function checkMoves() {
-    //boardArray[currentPosition + 1][currentPosition];
-};
 
 createBoard();
 
+
+//Deselect current highlights if clicked on empty square
 document.querySelectorAll(".square").forEach(square => {
     square.addEventListener("click", (e) => { 
-        //Deselect current highlights if clicked on empty square
         if (square.piece == undefined) {
             for (let i = 0; i < 8; i++) {                    
                 for (let j = 0; j < 8; j++) {
@@ -132,7 +96,12 @@ document.querySelectorAll(".piece").forEach(piece => {
         for (let i = 0; i < 8; i++) {                    
                 for (let j = 0; j < 8; j++) {
                     boardArray[i][j].classList.remove('highlight');
-                    console.log("Piece clean condition trigger"); 
+                    
+                    if (boardArray[i][j].piece != undefined) {
+                        boardArray[i][j].piece.clicked = false;
+                        console.log("Current piece click condition: " + boardArray[i][j].piece.clicked); 
+                    }
+                    console.log("Piece clean condition trigger."); 
                 }    
         }        
         
