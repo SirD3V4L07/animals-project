@@ -1,20 +1,19 @@
 const gameBoard = document.querySelector("#gameboard");
-let {} = {
-    xCoordinate: null,
-    yCoordinate: null,
-    player: null,
-    highlight: false,
-    piece: null
+let boardPiece = {
+    x: null,
+    y: null,
+    clicked: false,
+    player: null
 };
 let boardArray = 
-[[{},{},{},{},{},{},{},{}],
-[{},{},{},{},{},{},{},{}],
-[{},{},{},{},{},{},{},{}],
-[{},{},{},{},{},{},{},{}],
-[{},{},{},{},{},{},{},{}],
-[{},{},{},{},{},{},{},{}],
-[{},{},{},{},{},{},{},{}],
-[{},{},{},{},{},{},{},{}]];
+[[boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece],
+[boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece],
+[null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null],
+[null,null,null,null,null,null,null,null],
+[boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece],
+[boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece]];
 let toggle = true;
 let selectedPiece = null;
 
@@ -28,29 +27,17 @@ function createBoard() {
             piece.classList.add('piece');
             const square = document.createElement('div');
             square.classList.add('square');
-            boardArray[i][j] = square;
-            boardArray[i][j].x = j;
-            boardArray[i][j].y = i;
             
             //Register initial piece positions
-            if (i < 2) {
-                boardArray[i][j].piece = piece;                
-                boardArray[i][j].piece.player = 'top';
-                boardArray[i][j].piece.clicked = false;
-                boardArray[i][j].piece.x = j;
-                boardArray[i][j].piece.y = i;
+            if (i < 2) {             
+                boardArray[i][j].player = 'top';
+                boardArray[i][j].x = j;
+                boardArray[i][j].y = i;
             } 
             if (i > 5) {
-                boardArray[i][j].piece = piece;                
-                boardArray[i][j].piece.player = 'bottom';
-                boardArray[i][j].piece.clicked = false;
-                boardArray[i][j].piece.x = j;
-                boardArray[i][j].piece.y = i;
-            }
-            
-
-            if (boardArray[i][j].piece != null) {
-                square.appendChild(boardArray[i][j].piece);                
+                boardArray[i][j].player = 'bottom';
+                boardArray[i][j].x = j;
+                boardArray[i][j].y = i;
             }
 
             //Define square styles to make checkered pattern
@@ -59,13 +46,28 @@ function createBoard() {
             } else {
                 square.classList.add('odd-square');
             }
-            
-            gameBoard.append(boardArray[i][j]);
+
+            //Append new elements to board element
+            if (boardArray[i][j] != null) {
+                square.appendChild(piece);                
+            }            
+            gameBoard.append(square);
             toggle = !toggle;    
         }
         toggle = !toggle;
     };
 };
+
+function refreshBoard() {
+     gameBoard.replaceChildren()
+    for (let i = 0; i < 8; i++) {
+        
+        for (let j = 0; j < 8; j++) {
+            gameBoard.append(boardArray[i][j]);
+            console.log("Refresh trigger");
+        }
+    }
+}
 
 function squareClickHandler() {
     //Deselect current highlights if clicked on empty square
@@ -82,7 +84,8 @@ function squareClickHandler() {
                                 boardArray[i][j].piece = "";
                                 console.log("Piece move condition triggered");
                                 console.log("Empty piece: " + boardArray[i][j].piece);
-                                console.log("New piece: " + square.piece);                                
+                                console.log("New piece: " + square.piece);    
+                                refreshBoard();                            
                             }
                         }    
                     }
