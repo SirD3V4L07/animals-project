@@ -28,12 +28,12 @@ function createBoard() {
             //Create squares and pieces
             const piece = document.createElement('div');
             piece.classList.add('piece');
-            piece.dataset.x = x;
-            piece.dataset.y = y;
+            piece.dataset.x = j;
+            piece.dataset.y = i;
             const square = document.createElement('div');
             square.classList.add('square');
-            square.dataset.x = x;
-            square.dataset.y = y;
+            square.dataset.x = j;
+            square.dataset.y = i;
             
             //Register initial piece positions
             if (i < 2) {             
@@ -67,7 +67,7 @@ function createBoard() {
 
 function addClickBehavior() {
     gameBoard.addEventListener("click", (e) => {
-
+        console.log("Entered addClickBehaviour");
         if (e.target.classList.contains("piece")) {
             //Piece click logic
             clickPiece(e.target);
@@ -80,8 +80,25 @@ function addClickBehavior() {
 };
 
 function clickPiece(piece) {
-    //Is this piece being clicked first or clicked again for toggling highlights?
+    console.log("Entered clickPiece");
     //Highlight valid squares if clicked first time
+    if ((selectedPiece.x == null) && (selectedPiece.y == null)) {
+        for (let i = piece.dataset.y - 1; i <= piece.dataset.y + 1; i++) {
+            console.log("i: " + i);
+            for (let j = piece.dataset.x - 1; j <= piece.dataset.x + 1; j++) {
+                console.log("j: " + j);
+                if ((boardArray[i] != undefined) && (boardArray[i][j] != undefined) && (boardArray[i][j] == null)) {
+                    document.querySelector(`.square[data-x="${j}"][data-y="${i}"]`).classList.add("highlight");
+                    console.log("Entered highlight condition");
+                }
+            }
+            
+        }
+    }
+    //Is this piece being clicked first or clicked again for toggling highlights?
+    if ((selectedPiece.x == piece.dataset.x) && (selectedPiece.y == piece.dataset.y))  {
+        //Clicking a selected piece, click will toggle off highlights
+    }
     //Toggle off highlighted squares if clicked second time
 
 }
@@ -95,3 +112,4 @@ function clickSquare(square) {
 
 
 createBoard();
+addClickBehavior();
