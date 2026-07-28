@@ -1,19 +1,22 @@
 const gameBoard = document.querySelector("#gameboard");
-let boardPiece = {
-    x: null,
-    y: null,
-    clicked: false,
-    player: null
-};
+
+function createPiece() {
+    return {
+        x: null,
+        y: null,
+        clicked: false,
+        player: null
+    };
+}
 let boardArray = 
-[[boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece],
-[boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece],
+[[createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece()],
+[createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece()],
 [null,null,null,null,null,null,null,null],
 [null,null,null,null,null,null,null,null],
 [null,null,null,null,null,null,null,null],
 [null,null,null,null,null,null,null,null],
-[boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece],
-[boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece,boardPiece]];
+[createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece()],
+[createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece()]];
 let toggle = true;
 let selectedPiece = {
     x: null,
@@ -82,11 +85,14 @@ function addClickBehavior() {
 function clickPiece(piece) {
     console.log("Entered clickPiece");
     //Highlight valid squares if clicked first time
+    const x = Number(piece.dataset.x);
+    const y = Number(piece.dataset.y);
     if ((selectedPiece.x == null) && (selectedPiece.y == null)) {
-        for (let i = piece.dataset.y - 1; i <= piece.dataset.y + 1; i++) {
+        for (let i = y - 1; i <= y + 1; i++) {
             console.log("i: " + i);
-            for (let j = piece.dataset.x - 1; j <= piece.dataset.x + 1; j++) {
+            for (let j = x - 1; j <= x + 1; j++) {
                 console.log("j: " + j);
+                
                 if ((boardArray[i] != undefined) && (boardArray[i][j] != undefined) && (boardArray[i][j] == null)) {
                     document.querySelector(`.square[data-x="${j}"][data-y="${i}"]`).classList.add("highlight");
                     console.log("Entered highlight condition");
