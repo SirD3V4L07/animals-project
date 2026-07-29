@@ -89,12 +89,11 @@ function clickPiece(piece) {
     const y = Number(piece.dataset.y);
     if ((selectedPiece.x == null) && (selectedPiece.y == null)) {
         for (let i = y - 1; i <= y + 1; i++) {
-            console.log("i: " + i);
+            
             for (let j = x - 1; j <= x + 1; j++) {
-                console.log("j: " + j);
                 
-                if ((boardArray[i] != undefined) && (boardArray[i][j] != undefined) && (boardArray[i][j] == null)) {
-                    document.querySelector(`.square[data-x="${j}"][data-y="${i}"]`).classList.add("highlight");
+                if (boardArray[i]?.[j] === null) {
+                    document.querySelector(`.square[data-y="${i}"][data-x="${j}"]`).classList.add("highlight");
                     console.log("Entered highlight condition");
                 }
             }
