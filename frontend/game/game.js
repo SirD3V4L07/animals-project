@@ -68,6 +68,10 @@ function createBoard() {
     };
 };
 
+function clearHighlights() {
+    document.querySelectorAll(".highlight").forEach(element => {element.classList.remove('highlight')});
+}
+
 function addClickBehavior() {
     gameBoard.addEventListener("click", (e) => {
         console.log("Entered addClickBehaviour");
@@ -87,6 +91,7 @@ function clickPiece(piece) {
     //Highlight valid squares if clicked first time
     const x = Number(piece.dataset.x);
     const y = Number(piece.dataset.y);
+    clearHighlights();
     if ((selectedPiece.x == null) && (selectedPiece.y == null)) {
         for (let i = y - 1; i <= y + 1; i++) {
             
