@@ -117,6 +117,9 @@ function clickSquare(square) {
     //Is this square highlighted?
     //Move piece if highlighted
     //Clear highlights if not highlighted
+    if (!square.classList.contains('highlight')) {
+        clearHighlights();
+    };
 }
 
 
