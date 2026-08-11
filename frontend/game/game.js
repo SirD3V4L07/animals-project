@@ -72,6 +72,11 @@ function clearHighlights() {
     document.querySelectorAll(".highlight").forEach(element => {element.classList.remove('highlight')});
 }
 
+function clearSelection() {
+    selectedPiece.x = null;
+    selectedPiece.y = null;
+}
+
 function addClickBehavior() {
     gameBoard.addEventListener("click", (e) => {
         console.log("Entered addClickBehaviour");
@@ -92,7 +97,9 @@ function clickPiece(piece) {
     const x = Number(piece.dataset.x);
     const y = Number(piece.dataset.y);
     clearHighlights();
-    if ((selectedPiece.x == null) && (selectedPiece.y == null)) {
+    if ((selectedPiece.x != x) || (selectedPiece.y != y)) {
+        selectedPiece.x = x;
+        selectedPiece.y = y;
         for (let i = y - 1; i <= y + 1; i++) {
             
             for (let j = x - 1; j <= x + 1; j++) {
@@ -104,10 +111,13 @@ function clickPiece(piece) {
             }
             
         }
-    }
+    } else
     //Is this piece being clicked first or clicked again for toggling highlights?
-    if ((selectedPiece.x == piece.dataset.x) && (selectedPiece.y == piece.dataset.y))  {
+    if ((selectedPiece.x === x) && (selectedPiece.y === y))  {
         //Clicking a selected piece, click will toggle off highlights
+        clearHighlights();
+        clearSelection();
+        console.log("Entered click again condition");
     }
     //Toggle off highlighted squares if clicked second time
 
@@ -119,6 +129,7 @@ function clickSquare(square) {
     //Clear highlights if not highlighted
     if (!square.classList.contains('highlight')) {
         clearHighlights();
+        clearSelection();
     };
 }
 
