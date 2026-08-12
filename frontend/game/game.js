@@ -24,6 +24,7 @@ let selectedPiece = {
 };
 
 function createBoard() {
+    gameBoard.innerHTML = "";
     for (let i = 0; i < 8; i++) {
         
         for (let j = 0; j < 8; j++) {
@@ -37,18 +38,6 @@ function createBoard() {
             square.classList.add('square');
             square.dataset.x = j;
             square.dataset.y = i;
-            
-            //Register initial piece positions
-            if (i < 2) {             
-                boardArray[i][j].player = 'top';
-                boardArray[i][j].x = j;
-                boardArray[i][j].y = i;
-            } 
-            if (i > 5) {
-                boardArray[i][j].player = 'bottom';
-                boardArray[i][j].x = j;
-                boardArray[i][j].y = i;
-            }
 
             //Define square styles to make checkered pattern
             if (toggle) {
@@ -59,6 +48,8 @@ function createBoard() {
 
             //Append squares and piece elements to board element
             if (boardArray[i][j] != null) {
+                boardArray[i][j].x = j;
+                boardArray[i][j].y = i;
                 square.appendChild(piece);                
             }            
             gameBoard.append(square);
@@ -77,62 +68,59 @@ function clearSelection() {
     selectedPiece.y = null;
 }
 
+function refreshBoard() {
+
+}
+
 function addClickBehavior() {
-    gameBoard.addEventListener("click", (e) => {
-        console.log("Entered addClickBehaviour");
-        if (e.target.classList.contains("piece")) {
-            //Piece click logic
+    gameBoard.addEventListener("click", (e) => {        
+        if (e.target.classList.contains("piece")) {            
             clickPiece(e.target);
-        } else if (e.target.classList.contains("square")) {
-            //Square click logic
+        } else if (e.target.classList.contains("square")) {            
             clickSquare(e.target);
         }
 
     });
 };
 
-function clickPiece(piece) {
-    console.log("Entered clickPiece");
-    //Highlight valid squares if clicked first time
+function clickPiece(piece) {       
     const x = Number(piece.dataset.x);
     const y = Number(piece.dataset.y);
     clearHighlights();
     if ((selectedPiece.x != x) || (selectedPiece.y != y)) {
         selectedPiece.x = x;
         selectedPiece.y = y;
-        for (let i = y - 1; i <= y + 1; i++) {
-            
-            for (let j = x - 1; j <= x + 1; j++) {
-                
+        for (let i = y - 1; i <= y + 1; i++) {            
+            for (let j = x - 1; j <= x + 1; j++) {                
                 if (boardArray[i]?.[j] === null) {
                     document.querySelector(`.square[data-y="${i}"][data-x="${j}"]`).classList.add("highlight");
-                    console.log("Entered highlight condition");
                 }
-            }
-            
+            }            
         }
-    } else
-    //Is this piece being clicked first or clicked again for toggling highlights?
-    if ((selectedPiece.x === x) && (selectedPiece.y === y))  {
-        //Clicking a selected piece, click will toggle off highlights
+    } else {        
         clearHighlights();
         clearSelection();
         console.log("Entered click again condition");
-    }
-    //Toggle off highlighted squares if clicked second time
-
+    }    
 }
 
 function clickSquare(square) {
-    //Is this square highlighted?
-    //Move piece if highlighted
-    //Clear highlights if not highlighted
     if (!square.classList.contains('highlight')) {
         clearHighlights();
         clearSelection();
-    };
+    } else {
+        //Logic for clicking a highlighted square
+        movePiece(square);
+    }
 }
 
+function movePiece(square) {
+    boardArray[square.dataset.y][square.dataset.x] = boardArray[selectedPiece.y][selectedPiece.x];
+    boardArray[selectedPiece.y][selectedPiece.x] = null;
+    clearHighlights();
+    clearSelection();
+    createBoard();
+}
 
 
 createBoard();
