@@ -32,8 +32,7 @@ function createBoard() {
             //Create squares and pieces
             const piece = document.createElement('div');
             piece.classList.add('piece');
-            piece.dataset.x = j;
-            piece.dataset.y = i;
+        
             const square = document.createElement('div');
             square.classList.add('square');
             square.dataset.x = j;
@@ -50,6 +49,11 @@ function createBoard() {
             if (boardArray[i][j] != null) {
                 boardArray[i][j].x = j;
                 boardArray[i][j].y = i;
+                if (boardArray[i][j].player === "top") {
+                    piece.classList.add('top');
+                } else {
+                    piece.classList.add('bottom');
+                }
                 square.appendChild(piece);                
             }            
             gameBoard.append(square);
@@ -84,8 +88,9 @@ function addClickBehavior() {
 };
 
 function clickPiece(piece) {       
-    const x = Number(piece.dataset.x);
-    const y = Number(piece.dataset.y);
+    const square = piece.parentElement;
+    const x = Number(square.dataset.x);
+    const y = Number(square.dataset.y);
     clearHighlights();
     if ((selectedPiece.x != x) || (selectedPiece.y != y)) {
         selectedPiece.x = x;

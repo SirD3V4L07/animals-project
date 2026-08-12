@@ -12,3 +12,13 @@
 12062026: I will need to populate the array with empty objects, with the pieces as properties, because the pieces cannot be objects themselves because they're DOM elements. I can run the createBoard nearly as is, except populate the starting pieces inside the appropriate cells using boardArray as reference. Then add event listeners to all pieces, which will check surrounding cells for any empty cell that isn't further than 1 cell away. 
 25062026: Trying to figure out clearing highlights when clicking empty squares or squares which contain a piece that's currently marked as clicked.
 22072026: Starting over the logic, again. I think the key thing I'm missing is checking the array for states, and changing the DOM based on array states, while leaving them completely separate. 
+12062026: Initial movement done, next will be:
+Set different colors for opposing player pieces
+Taking pieces mechanic
+Defining win state
+Defining turns and basic AI opponent
+Defining piece types and different movement depending on piece
+Changing piece visuals to animal portraits
+Improve game AI
+Launch first version of website with coming soon and roadmap etc
+Launch v1 of gameplay on website

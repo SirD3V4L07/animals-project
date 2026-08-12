@@ -16,9 +16,16 @@ body {
     flex-wrap: wrap;
 }
 
+.top {
+    background-color: rgb(72, 72, 168);
+}
+
+.bottom {
+    background-color: rgb(72, 168, 93);
+}
+
 .piece {
     border-radius: 100%;
-    background-color: rgb(72, 72, 168);
     width:5vw;
     min-width:30px;
     margin:5px;
@@ -42,6 +49,7 @@ body {
 }
 
 .highlight {
-    background-color: greenyellow;
+    background-color: rgb(172, 255, 47);
+    opacity:1;
     cursor:pointer;
 }
