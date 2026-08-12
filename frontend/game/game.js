@@ -1,22 +1,22 @@
 const gameBoard = document.querySelector("#gameboard");
 
-function createPiece() {
+function createPiece(player) {
     return {
         x: null,
         y: null,
         clicked: false,
-        player: null
+        player: player
     };
 }
 let boardArray = 
-[[createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece()],
-[createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece()],
+[[createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top")],
+[createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top")],
 [null,null,null,null,null,null,null,null],
 [null,null,null,null,null,null,null,null],
 [null,null,null,null,null,null,null,null],
 [null,null,null,null,null,null,null,null],
-[createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece()],
-[createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece(),createPiece()]];
+[createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom")],
+[createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom")]];
 let toggle = true;
 let selectedPiece = {
     x: null,
