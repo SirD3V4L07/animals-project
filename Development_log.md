@@ -15,6 +15,8 @@
 12062026: Initial movement done, next will be:
 Set different colors for opposing player pieces
 Taking pieces mechanic
+    -Highlight enemy pieces if in range (highlight logic)
+    -Increment score if replaced enemy piece (movePiece logic)
 Defining win state
 Defining turns and basic AI opponent
 Defining piece types and different movement depending on piece

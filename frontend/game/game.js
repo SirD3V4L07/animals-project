@@ -4,7 +4,6 @@ function createPiece(player) {
     return {
         x: null,
         y: null,
-        clicked: false,
         player: player
     };
 }
@@ -21,6 +20,10 @@ let toggle = true;
 let selectedPiece = {
     x: null,
     y: null
+};
+let gameScore = {
+    top: 0,
+    bottom: 0
 };
 
 function createBoard() {
@@ -77,15 +80,21 @@ function refreshBoard() {
 }
 
 function addClickBehavior() {
-    gameBoard.addEventListener("click", (e) => {        
-        if (e.target.classList.contains("piece")) {            
-            clickPiece(e.target);
-        } else if (e.target.classList.contains("square")) {            
-            clickSquare(e.target);
-        }
+    gameBoard.addEventListener("click", (e) => {
+        const square = e.target.closest(".square");
 
+        if (!square) return;
+
+        if (square.classList.contains("highlight")) {
+            movePiece(square);
+        } else if (e.target.classList.contains("piece")) {
+            clickPiece(e.target);
+        } else {
+            clearHighlights();
+            clearSelection();
+        }
     });
-};
+}
 
 function clickPiece(piece) {       
     const square = piece.parentElement;
@@ -97,15 +106,14 @@ function clickPiece(piece) {
         selectedPiece.y = y;
         for (let i = y - 1; i <= y + 1; i++) {            
             for (let j = x - 1; j <= x + 1; j++) {                
-                if (boardArray[i]?.[j] === null) {
-                    document.querySelector(`.square[data-y="${i}"][data-x="${j}"]`).classList.add("highlight");
+                if ((boardArray[i]?.[j] === null) || (boardArray[i]?.[j]?.player != boardArray[y][x].player)){
+                    document.querySelector(`.square[data-y="${i}"][data-x="${j}"]`)?.classList.add("highlight");
                 }
             }            
         }
     } else {        
         clearHighlights();
         clearSelection();
-        console.log("Entered click again condition");
     }    
 }
 
@@ -114,14 +122,21 @@ function clickSquare(square) {
         clearHighlights();
         clearSelection();
     } else {
-        //Logic for clicking a highlighted square
         movePiece(square);
     }
 }
 
 function movePiece(square) {
+    if (boardArray[square.dataset.y][square.dataset.x] != null) {
+        let point = boardArray[selectedPiece.y][selectedPiece.x].player;
+        gameScore[point] += 1;
+        console.log(gameScore);
+    }
+    
     boardArray[square.dataset.y][square.dataset.x] = boardArray[selectedPiece.y][selectedPiece.x];
     boardArray[selectedPiece.y][selectedPiece.x] = null;
+    
+    
     clearHighlights();
     clearSelection();
     createBoard();
