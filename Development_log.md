@@ -18,8 +18,30 @@ Taking pieces mechanic
     -Highlight enemy pieces if in range (highlight logic)
     -Increment score if replaced enemy piece (movePiece logic)
 Defining win state
+    -Analogy to ecosystems and wildlife
+    -Each side has 8 resources which must be protected from the enemy
+    -Resources are taken when your piece reaches opposing end of board
+    -Each end of the board has one resource on each square of the last opposing lane
+    -Pieces can be captured
+    -The piece that takes a resource is allowed to reproduce 
+    -Reproduction adds a life to that piece, or more depending on reproduction rate
+    -Each piece may only reproduce once
+    -Whoever takes all resources first wins
+    -Only herbivores can collect resources, only carnivores can capture, omnivores can do both
+    -A carnivore reproduces by capturing pieces rather than resources, and typically reproduces in fewer numbers
+    -Each piece has a power level determined by the animal's real life mass and their hunting strategies or defensive strategies, such as group hunting when there are other alike pieces in game
+    -Power levels determine whether a piece can take another piece
 Defining turns and basic AI opponent
 Defining piece types and different movement depending on piece
+    -Initial pieces for testing must consist of both carnivores and herbivores
+    -Include variety of movement, like land, flying and swimming animals
+    -Inlude 2 of each, so 8 different species
+    -2 flying carnivores: Buteo and dragonfly
+    -2 land carnivores: European wild cat and african wild dog
+    -2 swimming carnivores: 
+    -2 flying herbivores
+    -2 land herbivores
+    -2 swimming herbivores
 Changing piece visuals to animal portraits
 Improve game AI
 Launch first version of website with coming soon and roadmap etc
