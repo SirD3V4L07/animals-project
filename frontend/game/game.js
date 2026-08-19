@@ -1,21 +1,40 @@
+async function loadAnimal(id) {
+    const response = await fetch(`/backend/data/${id}.json`);
+
+    if (!response.ok) {
+        throw new Error(`Could not load animal: ${id}`);
+    }
+
+    return await response.json();
+}
+
+async function assignAnimal(animal, x, y, player) {
+    boardArray[y][x] = createPiece(
+        await loadAnimal(animal),
+        player
+    );
+}
+
 const gameBoard = document.querySelector("#gameboard");
 
-function createPiece(player) {
-    return {
-        x: null,
-        y: null,
+function createPiece(animal, player) {
+    const piece = {
+        animal: animal,
         player: player
     };
+
+    return piece;
 }
+
 let boardArray = 
-[[createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top")],
-[createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top"),createPiece("top")],
+[[createPiece("","top"),createPiece("","top"),createPiece("","top"),createPiece("","top"),createPiece("","top"),createPiece("","top"),createPiece("","top"),createPiece("","top")],
+[createPiece("","top"),createPiece("","top"),createPiece("","top"),createPiece("","top"),createPiece("","top"),createPiece("","top"),createPiece("","top"),createPiece("buteo","top")],
 [null,null,null,null,null,null,null,null],
 [null,null,null,null,null,null,null,null],
 [null,null,null,null,null,null,null,null],
 [null,null,null,null,null,null,null,null],
-[createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom")],
-[createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom"),createPiece("bottom")]];
+[createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom")],
+[createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom")]];
 let toggle = true;
 let selectedPiece = {
     x: null,
@@ -25,6 +44,13 @@ let gameScore = {
     top: 0,
     bottom: 0
 };
+
+async function main() {
+    await assignAnimal("buteo", 0, 1, "top");
+    
+    createBoard();
+    addClickBehavior();
+}
 
 function createBoard() {
     gameBoard.innerHTML = "";
@@ -142,6 +168,5 @@ function movePiece(square) {
     createBoard();
 }
 
+main();
 
-createBoard();
-addClickBehavior();

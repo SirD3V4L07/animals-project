@@ -17,17 +17,20 @@ body {
 }
 
 .top {
-    background-color: rgb(93, 151, 236);
+    background-color: rgb(238, 238, 238);
+    border: 2px solid rgb(93, 151, 236);
+
 }
 
 .bottom {
-    background-color: rgb(233, 126, 27);
+    background-color: rgb(238, 238, 238);
+    border: 2px solid rgb(233, 126, 27);
 }
 
 .piece {
-    border-radius: 100%;
+    border-radius: 15%;
     width:5vw;
-    min-width:30px;
+    min-width:20px;
     margin:5px;
     cursor:pointer;
 }
