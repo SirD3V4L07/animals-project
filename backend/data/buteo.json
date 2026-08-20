@@ -5,7 +5,7 @@
     "travel": "Flying",
     "speed": 5,
     "diet": "carnivore",
-    "image": "/images/buteo.jpg",
+    "image": "/backend/data/images/buteo.jpg",
     "power": 8,
     "reproduction": 1
 }

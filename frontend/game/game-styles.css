@@ -18,13 +18,13 @@ body {
 
 .top {
     background-color: rgb(238, 238, 238);
-    border: 2px solid rgb(93, 151, 236);
+    border: 3px solid rgb(93, 151, 236);
 
 }
 
 .bottom {
     background-color: rgb(238, 238, 238);
-    border: 2px solid rgb(233, 126, 27);
+    border: 3px solid rgb(233, 126, 27);
 }
 
 .piece {
@@ -33,6 +33,9 @@ body {
     min-width:20px;
     margin:5px;
     cursor:pointer;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .square {
