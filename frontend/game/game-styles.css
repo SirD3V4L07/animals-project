@@ -17,14 +17,14 @@ body {
 }
 
 .top {
-    background-color: rgb(238, 238, 238);
-    border: 3px solid rgb(93, 151, 236);
+    background-color: rgb(167, 166, 166);
+    border: 2.5px solid rgb(24, 23, 23);
 
 }
 
 .bottom {
-    background-color: rgb(238, 238, 238);
-    border: 3px solid rgb(233, 126, 27);
+    background-color: rgb(167, 166, 166);
+    border: 2.5px solid rgb(255, 255, 255);
 }
 
 .piece {

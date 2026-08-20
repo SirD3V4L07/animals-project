@@ -32,13 +32,6 @@ async function loadAnimal(id) {
     return await response.json();
 }
 
-async function assignAnimal(animal, x, y, player) {
-    boardArray[y][x] = createPiece(
-        await loadAnimal(animal),
-        player
-    );
-}
-
 function createPiece(animal, player) {
     const piece = {
         animal: animal,
@@ -48,9 +41,24 @@ function createPiece(animal, player) {
     return piece;
 }
 
+async function setAnimals() {
+    const buteo = await loadAnimal("buteo-buteo");
+    const agrioptera = await loadAnimal("agrioptera-insignis");
+
+    boardArray[0][0] = createPiece(buteo, "top");
+    boardArray[0][7] = createPiece(buteo, "top");
+    boardArray[7][0] = createPiece(buteo, "bottom");
+    boardArray[7][7] = createPiece(buteo, "bottom");
+
+    boardArray[0][1] = createPiece(agrioptera, "top");
+    boardArray[0][6] = createPiece(agrioptera, "top");
+    boardArray[7][1] = createPiece(agrioptera, "bottom");
+    boardArray[7][6] = createPiece(agrioptera, "bottom");
+}
+
 async function main() {
-    await assignAnimal("buteo", 0, 1, "top");
     
+    await setAnimals();
     createBoard();
     addClickBehavior();
 }
