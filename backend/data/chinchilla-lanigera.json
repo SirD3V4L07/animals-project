@@ -1,11 +1,11 @@
 {
     "id": "chinchilla-lanigera",
     "name": "Chinchilla",
-    "scientificName": "Lycaon pictus",
+    "scientificName": "Chinchilla lanigera",
     "travel": "Land",
     "speed": 4,
     "diet": "Herbivore",
-    "image": "/backend/data/images/lycaon-pictus.jpg",
+    "image": "/backend/data/images/chinchilla-lanigera.jpg",
     "power": 5550,
     "reproduction": 2
     

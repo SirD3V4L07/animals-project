@@ -44,6 +44,12 @@ function createPiece(animal, player) {
 async function setAnimals() {
     const buteo = await loadAnimal("buteo-buteo");
     const agrioptera = await loadAnimal("agrioptera-insignis");
+    const mellifera = await loadAnimal("apis-mellifera");
+    const chinchilla = await loadAnimal("chinchilla-lanigera");
+    const dipsosaurus = await loadAnimal("dipsosaurus-dorsalis");
+    const eonycteris = await loadAnimal("eonycteris-spelaea");
+    const felis = await loadAnimal("felis-silvestris");
+    const lycaon = await loadAnimal("lycaon-pictus");
 
     boardArray[0][0] = createPiece(buteo, "top");
     boardArray[0][7] = createPiece(buteo, "top");
@@ -54,6 +60,36 @@ async function setAnimals() {
     boardArray[0][6] = createPiece(agrioptera, "top");
     boardArray[7][1] = createPiece(agrioptera, "bottom");
     boardArray[7][6] = createPiece(agrioptera, "bottom");
+
+    boardArray[0][2] = createPiece(mellifera, "top");
+    boardArray[0][5] = createPiece(mellifera, "top");
+    boardArray[7][2] = createPiece(mellifera, "bottom");
+    boardArray[7][5] = createPiece(mellifera, "bottom");
+
+    boardArray[0][3] = createPiece(eonycteris, "top");
+    boardArray[0][4] = createPiece(eonycteris, "top");
+    boardArray[7][3] = createPiece(eonycteris, "bottom");
+    boardArray[7][4] = createPiece(eonycteris, "bottom");
+
+    boardArray[1][0] = createPiece(chinchilla, "top");
+    boardArray[1][7] = createPiece(chinchilla, "top");
+    boardArray[6][0] = createPiece(chinchilla, "bottom");
+    boardArray[6][7] = createPiece(chinchilla, "bottom");
+
+    boardArray[1][1] = createPiece(dipsosaurus, "top");
+    boardArray[1][6] = createPiece(dipsosaurus, "top");
+    boardArray[6][1] = createPiece(dipsosaurus, "bottom");
+    boardArray[6][6] = createPiece(dipsosaurus, "bottom");
+
+    boardArray[1][2] = createPiece(felis, "top");
+    boardArray[1][5] = createPiece(felis, "top");
+    boardArray[6][2] = createPiece(felis, "bottom");
+    boardArray[6][5] = createPiece(felis, "bottom");
+
+    boardArray[1][3] = createPiece(lycaon, "top");
+    boardArray[1][4] = createPiece(lycaon, "top");
+    boardArray[6][3] = createPiece(lycaon, "bottom");
+    boardArray[6][4] = createPiece(lycaon, "bottom");
 }
 
 async function main() {
