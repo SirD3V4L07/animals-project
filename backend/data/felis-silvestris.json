@@ -1,0 +1,11 @@
+{
+    "id": "felis-silvestris",
+    "name": "European Wildcat",
+    "scientificName": "Felis silvestris",
+    "travel": "Land",
+    "speed": 4,
+    "diet": "Carnivore",
+    "image": "/backend/data/images/felis-silvestris.jpg",
+    "power": 6209,
+    "reproduction": 3
+}

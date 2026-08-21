@@ -1,0 +1,12 @@
+{
+    "id": "apis-mellifera",
+    "name": "Honey bee",
+    "scientificName": "Apis mellifera",
+    "travel": "Flying",
+    "speed": 4,
+    "diet": "Herbivore",
+    "image": "/backend/data/images/apis-mellifera.jpg",
+    "power": 3176,
+    "reproduction": 9
+    
+}

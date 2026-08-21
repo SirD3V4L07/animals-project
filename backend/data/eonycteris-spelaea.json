@@ -1,0 +1,12 @@
+{
+    "id": "eonycteris-spelaea",
+    "name": "Dawn bat",
+    "scientificName": "Eonycteris spelaea",
+    "travel": "Flying",
+    "speed": 6,
+    "diet": "Herbivore",
+    "image": "/backend/data/images/eonycteris-spelaea.jpg",
+    "power": 4939,
+    "reproduction": 1
+    
+}

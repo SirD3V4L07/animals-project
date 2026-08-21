@@ -1,0 +1,12 @@
+{
+    "id": "lycaon-pictus",
+    "name": "African Wild Dog",
+    "scientificName": "Lycaon pictus",
+    "travel": "Land",
+    "speed": 6,
+    "diet": "Carnivore",
+    "image": "/backend/data/images/lycaon-pictus.jpg",
+    "power": 6591,
+    "reproduction": 5
+    
+}

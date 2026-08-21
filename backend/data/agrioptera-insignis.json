@@ -3,9 +3,9 @@
     "name": "Red swampdragon",
     "scientificName": "Agrionoptera insignis",
     "travel": "Flying",
-    "speed": 3,
+    "speed": 5,
     "diet": "Carnivore",
     "image": "/backend/data/images/agrionoptera-insignis.jpg",
     "power": 3287,
-    "reproduction": 1
+    "reproduction": 8
 }

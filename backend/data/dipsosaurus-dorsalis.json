@@ -1,0 +1,12 @@
+{
+    "id": "dipsosaurus-dorsalis",
+    "name": "Desert iguana",
+    "scientificName": "Dipsosaurus dorsalis",
+    "travel": "Land",
+    "speed": 4,
+    "diet": "Herbivore",
+    "image": "/backend/data/images/lycaon-pictus.jpg",
+    "power": 4982,
+    "reproduction": 4
+    
+}

@@ -3,9 +3,9 @@
     "name": "Buteo",
     "scientificName": "Buteo buteo",
     "travel": "Flying",
-    "speed": 4,
+    "speed": 5,
     "diet": "Carnivore",
     "image": "/backend/data/images/buteo-buteo.jpg",
     "power": 5715,
-    "reproduction": 1
+    "reproduction": 3
 }
