@@ -57,3 +57,5 @@ So development will be:
 7) Create reproduction mechanic
 8) Define win states: All resources taken/All herbivores captured
 9) Create AI opponent and turns
+
+test
