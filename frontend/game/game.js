@@ -172,6 +172,8 @@ function addClickBehavior() {
 function highlightMoves(square,piece,x,y) {
     selectedPiece.x = x;
     selectedPiece.y = y;
+
+    
     for (let i = y - 1; i <= y + 1; i++) {            
         for (let j = x - 1; j <= x + 1; j++) {                
             if ((boardArray[i]?.[j] === null) || (boardArray[i]?.[j]?.player != boardArray[y][x].player)){

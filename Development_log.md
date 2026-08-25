@@ -58,4 +58,11 @@ So development will be:
 8) Define win states: All resources taken/All herbivores captured
 9) Create AI opponent and turns
 
-test
+
+Brainstorming movement types:
+
+X different dimensions of movement:
+1) Directions
+2) Distance (speed)
+3) Altitude (does it jump over other pieces?)
+4) 
