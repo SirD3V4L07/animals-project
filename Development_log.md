@@ -48,8 +48,8 @@ Launch first version of website with coming soon and roadmap etc
 Launch v1 of gameplay on website
 
 So development will be:
-1) Setting animal pictures from JSON file to facilitate dealing with piece types later 
-2) Create the different properties on piece object (Name, diet, reproduction, movement and adaptation level)
+1) Setting animal pictures from JSON file to facilitate dealing with piece types later (Done)
+2) Create the different properties on piece object (Name, diet, reproduction, movement and adaptation level) (Done)
 3) Developing the different movement types
 4) Create movement function with a switch for each piece type and call the function inside clickPiece
 5) Condition capture on carnivore piece property being truthy

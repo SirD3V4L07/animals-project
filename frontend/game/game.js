@@ -169,21 +169,27 @@ function addClickBehavior() {
     });
 }
 
+function highlightMoves(square,piece,x,y) {
+    selectedPiece.x = x;
+    selectedPiece.y = y;
+    for (let i = y - 1; i <= y + 1; i++) {            
+        for (let j = x - 1; j <= x + 1; j++) {                
+            if ((boardArray[i]?.[j] === null) || (boardArray[i]?.[j]?.player != boardArray[y][x].player)){
+                document.querySelector(`.square[data-y="${i}"][data-x="${j}"]`)?.classList.add("highlight");
+            }
+        }            
+    }
+}
+
 function clickPiece(piece) {       
     const square = piece.parentElement;
     const x = Number(square.dataset.x);
     const y = Number(square.dataset.y);
     clearHighlights();
+    
+    // If clicked on non-currently selected piece, show highlights
     if ((selectedPiece.x != x) || (selectedPiece.y != y)) {
-        selectedPiece.x = x;
-        selectedPiece.y = y;
-        for (let i = y - 1; i <= y + 1; i++) {            
-            for (let j = x - 1; j <= x + 1; j++) {                
-                if ((boardArray[i]?.[j] === null) || (boardArray[i]?.[j]?.player != boardArray[y][x].player)){
-                    document.querySelector(`.square[data-y="${i}"][data-x="${j}"]`)?.classList.add("highlight");
-                }
-            }            
-        }
+        highlightMoves(square,piece,x,y);
     } else {        
         clearHighlights();
         clearSelection();
