@@ -172,10 +172,12 @@ function addClickBehavior() {
 function highlightMoves(square,piece,x,y) {
     selectedPiece.x = x;
     selectedPiece.y = y;
+    piece = boardArray[square.dataset.y][square.dataset.x];
+    let speed = piece.animal.speed;
 
-    
-    for (let i = y - 1; i <= y + 1; i++) {            
-        for (let j = x - 1; j <= x + 1; j++) {                
+    console.log(piece.animal.speed);
+    for (let i = y - speed; i <= y + speed; i++) {            
+        for (let j = x - speed; j <= x + speed; j++) {                
             if ((boardArray[i]?.[j] === null) || (boardArray[i]?.[j]?.player != boardArray[y][x].player)){
                 document.querySelector(`.square[data-y="${i}"][data-x="${j}"]`)?.classList.add("highlight");
             }
