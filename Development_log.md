@@ -61,8 +61,15 @@ So development will be:
 
 Brainstorming movement types:
 
-X different dimensions of movement:
-1) Directions
+3 different dimensions of movement (for now):
+1) Direction
 2) Distance (speed)
 3) Altitude (does it jump over other pieces?)
-4) 
+
+Direction will be either horizontal or diagonal, each in 4 different directions. 
+Diagonal movement will be defined by a simple formula, where x and y must both change by 1 value either positively or negatively (eg x:1, y:1 becomes x:0,y:2)
+Horizontal movement will be defined by only one of the dimensions changing at a time. (eg x:1,y:1 becomes x:1,y:0)
+
+Speed will be a simple travel distance change by attaching speed value onto movement check loop
+
+Altitude will check for pieces in the way and..

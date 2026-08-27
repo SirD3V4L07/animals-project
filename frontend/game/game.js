@@ -175,7 +175,6 @@ function highlightMoves(square,piece,x,y) {
     piece = boardArray[square.dataset.y][square.dataset.x];
     let speed = piece.animal.speed;
 
-    console.log(piece.animal.speed);
     for (let i = y - speed; i <= y + speed; i++) {            
         for (let j = x - speed; j <= x + speed; j++) {                
             if ((boardArray[i]?.[j] === null) || (boardArray[i]?.[j]?.player != boardArray[y][x].player)){
