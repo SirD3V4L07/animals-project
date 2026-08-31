@@ -3,6 +3,8 @@
     "name": "Dawn bat",
     "scientificName": "Eonycteris spelaea",
     "travel": "Flying",
+    "orthogonal": false,
+    "diagonal": true,
     "speed": 6,
     "diet": "Herbivore",
     "image": "/backend/data/images/eonycteris-spelaea.jpg",

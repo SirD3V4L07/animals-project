@@ -3,6 +3,8 @@
     "name": "Desert iguana",
     "scientificName": "Dipsosaurus dorsalis",
     "travel": "Land",
+    "orthogonal": true,
+    "diagonal": false,
     "speed": 4,
     "diet": "Herbivore",
     "image": "/backend/data/images/dipsosaurus-dorsalis.jpg",

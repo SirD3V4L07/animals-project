@@ -3,6 +3,8 @@
     "name": "Chinchilla",
     "scientificName": "Chinchilla lanigera",
     "travel": "Land",
+    "orthogonal": true,
+    "diagonal": false,
     "speed": 4,
     "diet": "Herbivore",
     "image": "/backend/data/images/chinchilla-lanigera.jpg",

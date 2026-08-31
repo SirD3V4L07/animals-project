@@ -3,6 +3,8 @@
     "name": "European Wildcat",
     "scientificName": "Felis silvestris",
     "travel": "Land",
+    "orthogonal": true,
+    "diagonal": true,
     "speed": 4,
     "diet": "Carnivore",
     "image": "/backend/data/images/felis-silvestris.jpg",

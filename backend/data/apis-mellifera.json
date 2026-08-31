@@ -3,6 +3,8 @@
     "name": "Honey bee",
     "scientificName": "Apis mellifera",
     "travel": "Flying",
+    "orthogonal": true,
+    "diagonal": false,
     "speed": 4,
     "diet": "Herbivore",
     "image": "/backend/data/images/apis-mellifera.jpg",

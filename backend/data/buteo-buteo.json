@@ -3,6 +3,8 @@
     "name": "Buteo",
     "scientificName": "Buteo buteo",
     "travel": "Flying",
+    "orthogonal": true,
+    "diagonal": false,
     "speed": 5,
     "diet": "Carnivore",
     "image": "/backend/data/images/buteo-buteo.jpg",
