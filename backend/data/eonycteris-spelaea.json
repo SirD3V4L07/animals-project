@@ -2,7 +2,7 @@
     "id": "eonycteris-spelaea",
     "name": "Dawn bat",
     "scientificName": "Eonycteris spelaea",
-    "travel": "Flying",
+    "flight": true,
     "orthogonal": false,
     "diagonal": true,
     "speed": 6,

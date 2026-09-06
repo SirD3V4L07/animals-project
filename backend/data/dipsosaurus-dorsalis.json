@@ -2,7 +2,7 @@
     "id": "dipsosaurus-dorsalis",
     "name": "Desert iguana",
     "scientificName": "Dipsosaurus dorsalis",
-    "travel": "Land",
+    "flight": false,
     "orthogonal": true,
     "diagonal": false,
     "speed": 4,

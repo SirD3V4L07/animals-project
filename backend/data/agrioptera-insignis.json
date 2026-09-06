@@ -2,7 +2,7 @@
     "id": "agrionoptera-insignis",
     "name": "Red swampdragon",
     "scientificName": "Agrionoptera insignis",
-    "travel": "Flying",
+    "flight": true,
     "orthogonal": true,
     "diagonal": true,
     "speed": 5,

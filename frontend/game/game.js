@@ -169,11 +169,14 @@ function addClickBehavior() {
     });
 }
 
-function highlightMoves(square,piece,x,y) {
+function highlightMoves(square,x,y) {
     selectedPiece.x = x;
     selectedPiece.y = y;
-    piece = boardArray[square.dataset.y][square.dataset.x];
-    let speed = piece.animal.speed;
+    const piece = boardArray[square.dataset.y][square.dataset.x];
+    const speed = piece.animal.speed;
+    const orthogonal = piece.animal.orthogonal;
+    const diagonal = piece.animal.diagonal;
+    const flight = piece.animal.flight;
 
     for (let i = y - speed; i <= y + speed; i++) {            
         for (let j = x - speed; j <= x + speed; j++) {                
@@ -192,7 +195,7 @@ function clickPiece(piece) {
     
     // If clicked on non-currently selected piece, show highlights
     if ((selectedPiece.x != x) || (selectedPiece.y != y)) {
-        highlightMoves(square,piece,x,y);
+        highlightMoves(square,x,y);
     } else {        
         clearHighlights();
         clearSelection();

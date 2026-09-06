@@ -2,7 +2,7 @@
     "id": "felis-silvestris",
     "name": "European Wildcat",
     "scientificName": "Felis silvestris",
-    "travel": "Land",
+    "flight": false,
     "orthogonal": true,
     "diagonal": true,
     "speed": 4,

@@ -2,7 +2,7 @@
     "id": "apis-mellifera",
     "name": "Honey bee",
     "scientificName": "Apis mellifera",
-    "travel": "Flying",
+    "flight": true,
     "orthogonal": true,
     "diagonal": false,
     "speed": 4,

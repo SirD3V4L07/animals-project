@@ -2,7 +2,7 @@
     "id": "buteo-buteo",
     "name": "Buteo",
     "scientificName": "Buteo buteo",
-    "travel": "Flying",
+    "flight": true,
     "orthogonal": true,
     "diagonal": false,
     "speed": 5,

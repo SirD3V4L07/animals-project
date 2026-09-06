@@ -2,7 +2,7 @@
     "id": "chinchilla-lanigera",
     "name": "Chinchilla",
     "scientificName": "Chinchilla lanigera",
-    "travel": "Land",
+    "flight": false,
     "orthogonal": true,
     "diagonal": false,
     "speed": 4,

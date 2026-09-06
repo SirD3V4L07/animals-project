@@ -2,7 +2,7 @@
     "id": "lycaon-pictus",
     "name": "African Wild Dog",
     "scientificName": "Lycaon pictus",
-    "travel": "Land",
+    "flight": false,
     "orthogonal": true,
     "diagonal": false,
     "speed": 6,
