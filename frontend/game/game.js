@@ -172,18 +172,88 @@ function addClickBehavior() {
 function highlightMoves(square,x,y) {
     selectedPiece.x = x;
     selectedPiece.y = y;
-    const piece = boardArray[square.dataset.y][square.dataset.x];
+    const piece = boardArray[y][x];
     const speed = piece.animal.speed;
     const orthogonal = piece.animal.orthogonal;
     const diagonal = piece.animal.diagonal;
     const flight = piece.animal.flight;
 
-    for (let i = y - speed; i <= y + speed; i++) {            
-        for (let j = x - speed; j <= x + speed; j++) {                
-            if ((boardArray[i]?.[j] === null) || (boardArray[i]?.[j]?.player != boardArray[y][x].player)){
-                document.querySelector(`.square[data-y="${i}"][data-x="${j}"]`)?.classList.add("highlight");
+    const orthogonalDirections = [
+        [0, -1], // up
+        [0, 1],  // down
+        [-1, 0], // left
+        [1, 0]   // right
+    ];
+
+    const diagonalDirections = [
+        [-1, -1], // nw
+        [1, -1], // ne
+        [-1, 1], // sw
+        [1, 1] // se
+    ];
+
+    let directions = [];
+
+    if (orthogonal) {
+        directions.push(...orthogonalDirections);
+    }
+
+    if (diagonal) {
+        directions.push(...diagonalDirections);
+    }
+
+
+    for (const [dx, dy] of directions) {
+        highlightDirection(
+            x,
+            y,
+            dx,
+            dy,
+            speed,
+            flight,
+            piece.player
+        );
+    }
+
+}
+
+function highlightDirection(x,y,dx,dy,speed,flight,player) {
+    for (let distance = 1; distance <= speed; distance++) {
+        const targetX = x + dx * distance;
+        const targetY = y + dy * distance;
+
+        const target = boardArray[targetY]?.[targetX];
+
+        // Outside board
+        if (target === undefined) {
+            break;
+        }
+
+        const square = document.querySelector(
+            `.square[data-y="${targetY}"][data-x="${targetX}"]`
+        );
+
+        // Empty square
+        if (target === null) {
+            square.classList.add("highlight");
+            continue;
+        }
+
+        // Enemy piece
+        if (target.player !== player) {
+            square.classList.add("highlight");
+
+            if (!flight) {
+                break;
             }
-        }            
+
+            continue;
+        }
+
+        // Friendly piece
+        if (!flight) {
+            break;
+        }
     }
 }
 
