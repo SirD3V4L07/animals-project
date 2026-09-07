@@ -6,7 +6,8 @@
     "orthogonal": true,
     "diagonal": true,
     "speed": 5,
-    "diet": "Carnivore",
+    "carnivore": true,
+    "herbivore": false,
     "image": "/backend/data/images/agrionoptera-insignis.jpg",
     "power": 3287,
     "reproduction": 8

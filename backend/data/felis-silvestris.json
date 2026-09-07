@@ -6,7 +6,8 @@
     "orthogonal": true,
     "diagonal": true,
     "speed": 4,
-    "diet": "Carnivore",
+    "carnivore": true,
+    "herbivore": false,
     "image": "/backend/data/images/felis-silvestris.jpg",
     "power": 6209,
     "reproduction": 3

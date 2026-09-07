@@ -6,7 +6,8 @@
     "orthogonal": true,
     "diagonal": false,
     "speed": 4,
-    "diet": "Herbivore",
+    "carnivore": false,
+    "herbivore": true,
     "image": "/backend/data/images/apis-mellifera.jpg",
     "power": 3176,
     "reproduction": 9

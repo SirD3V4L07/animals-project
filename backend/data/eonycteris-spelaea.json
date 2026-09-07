@@ -6,7 +6,8 @@
     "orthogonal": false,
     "diagonal": true,
     "speed": 6,
-    "diet": "Herbivore",
+    "carnivore": false,
+    "herbivore": true,
     "image": "/backend/data/images/eonycteris-spelaea.jpg",
     "power": 4939,
     "reproduction": 1

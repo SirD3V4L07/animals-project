@@ -6,7 +6,8 @@
     "orthogonal": true,
     "diagonal": false,
     "speed": 5,
-    "diet": "Carnivore",
+    "carnivore": true,
+    "herbivore": false,
     "image": "/backend/data/images/buteo-buteo.jpg",
     "power": 5715,
     "reproduction": 3

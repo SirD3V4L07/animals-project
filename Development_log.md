@@ -50,26 +50,12 @@ Launch v1 of gameplay on website
 So development will be:
 1) Setting animal pictures from JSON file to facilitate dealing with piece types later (Done)
 2) Create the different properties on piece object (Name, diet, reproduction, movement and adaptation level) (Done)
-3) Developing the different movement types
-4) Create movement function with a switch for each piece type and call the function inside clickPiece
+3) Developing the different movement types (Done for now)
+4) Create movement function with a switch for each piece type and call the function inside clickPiece (Done)
 5) Condition capture on carnivore piece property being truthy
-6) Create resources and capture resource mechanic
-7) Create reproduction mechanic
-8) Define win states: All resources taken/All herbivores captured
-9) Create AI opponent and turns
+6) Condition capture on power being superior to target
+7) Create resources and capture resource mechanic
+8) Create reproduction mechanic
+9) Define win states: All resources taken/All herbivores captured
+10) Create AI opponent and turns
 
-
-Brainstorming movement types:
-
-3 different dimensions of movement (for now):
-1) Direction
-2) Distance (speed)
-3) Altitude (does it jump over other pieces?)
-
-Direction will be either horizontal or diagonal, each in 4 different directions. 
-Diagonal movement will be defined by a simple formula, where x and y must both change by 1 value either positively or negatively (eg x:1, y:1 becomes x:0,y:2)
-Horizontal movement will be defined by only one of the dimensions changing at a time. (eg x:1,y:1 becomes x:1,y:0)
-
-Speed will be a simple travel distance change by attaching speed value onto movement check loop
-
-Altitude will check for pieces in the way and..

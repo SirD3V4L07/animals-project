@@ -6,7 +6,8 @@
     "orthogonal": true,
     "diagonal": false,
     "speed": 4,
-    "diet": "Herbivore",
+    "carnivore": false,
+    "herbivore": true,
     "image": "/backend/data/images/dipsosaurus-dorsalis.jpg",
     "power": 4982,
     "reproduction": 4

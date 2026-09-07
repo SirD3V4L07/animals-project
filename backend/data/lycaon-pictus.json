@@ -6,7 +6,8 @@
     "orthogonal": true,
     "diagonal": false,
     "speed": 6,
-    "diet": "Carnivore",
+    "carnivore": true,
+    "herbivore": false,
     "image": "/backend/data/images/lycaon-pictus.jpg",
     "power": 6591,
     "reproduction": 5
