@@ -211,13 +211,14 @@ function highlightMoves(square,x,y) {
             dy,
             speed,
             flight,
-            piece.player
+            piece.player,
+            piece
         );
     }
 
 }
 
-function highlightDirection(x,y,dx,dy,speed,flight,player) {
+function highlightDirection(x,y,dx,dy,speed,flight,player,piece) {
     for (let distance = 1; distance <= speed; distance++) {
         const targetX = x + dx * distance;
         const targetY = y + dy * distance;
@@ -240,7 +241,7 @@ function highlightDirection(x,y,dx,dy,speed,flight,player) {
         }
 
         // Enemy piece
-        if (target.player !== player) {
+        if ((target.player !== player) && (piece.animal.carnivore)) {
             square.classList.add("highlight");
 
             if (!flight) {
