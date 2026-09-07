@@ -241,7 +241,7 @@ function highlightDirection(x,y,dx,dy,speed,flight,player,piece) {
         }
 
         // Enemy piece
-        if ((target.player !== player) && (piece.animal.carnivore)) {
+        if ((target.player !== player) && (piece.animal.carnivore) && (piece.animal.power > target.animal.power)) {
             square.classList.add("highlight");
 
             if (!flight) {

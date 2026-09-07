@@ -52,8 +52,8 @@ So development will be:
 2) Create the different properties on piece object (Name, diet, reproduction, movement and adaptation level) (Done)
 3) Developing the different movement types (Done for now)
 4) Create movement function with a switch for each piece type and call the function inside clickPiece (Done)
-5) Condition capture on carnivore piece property being truthy
-6) Condition capture on power being superior to target
+5) Condition capture on carnivore piece property being truthy (Done)
+6) Condition capture on power being superior to target (Done)
 7) Create resources and capture resource mechanic
 8) Create reproduction mechanic
 9) Define win states: All resources taken/All herbivores captured
