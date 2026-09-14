@@ -18,13 +18,13 @@ body {
 
 .top {
     background-color: rgb(167, 166, 166);
-    border: 2.5px solid rgb(24, 23, 23);
+    border: 2.5px solid rgb(231, 9, 9);
 
 }
 
 .bottom {
     background-color: rgb(167, 166, 166);
-    border: 2.5px solid rgb(255, 255, 255);
+    border: 2.5px solid rgb(6, 116, 219);
 }
 
 .piece {

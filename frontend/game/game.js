@@ -8,6 +8,9 @@ let boardArray =
 [createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom")],
 [createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom"),createPiece("","bottom")]];
 
+let treeRowTop = [createTree(),createTree(),createTree(),createTree(),createTree(),createTree(),createTree(),createTree()];
+let treeRowBottom = [createTree(),createTree(),createTree(),createTree(),createTree(),createTree(),createTree(),createTree()];
+
 let toggle = true;
 
 let selectedPiece = {
@@ -39,6 +42,14 @@ function createPiece(animal, player) {
     };
 
     return piece;
+}
+
+function createTree() {
+    const tree = {
+        eaten: false,
+    };
+
+    return tree;
 }
 
 async function setAnimals() {
@@ -104,6 +115,11 @@ function createBoard() {
     for (let i = 0; i < 8; i++) {
         const treecell = document.createElement('div');
         treecell.classList.add('treecell');
+        treecell.dataset.x = i;
+        treecell.dataset.y = -1;
+        if (treeRowTop[i].eaten == true) {
+            treecell.style.backgroundImage = `url()`;
+        }        
         gameBoard.append(treecell);
     }
 
@@ -151,6 +167,11 @@ function createBoard() {
     for (let i = 0; i < 8; i++) {
         const treecell = document.createElement('div');
         treecell.classList.add('treecell');
+        treecell.dataset.x = i;
+        treecell.dataset.y = 8;
+        if (treeRowBottom[i].eaten == true) {
+            treecell.style.backgroundImage = `url()`;
+        }     
         gameBoard.append(treecell);
     }
 };
@@ -295,10 +316,25 @@ function clickSquare(square) {
 }
 
 function movePiece(square) {
-    if (boardArray[square.dataset.y][square.dataset.x] != null) {
+    const clickedSquare = boardArray[square.dataset.y][square.dataset.x];
+    if (clickedSquare != null) {
         let point = boardArray[selectedPiece.y][selectedPiece.x].player;
         gameScore[point] += 1;
         console.log(gameScore);
+    }
+
+    if ((square.dataset.y == 0) && 
+    (boardArray[selectedPiece.y][selectedPiece.x].animal.herbivore == true) &&
+    (boardArray[selectedPiece.y][selectedPiece.x].player == "bottom")
+        ) {
+            treeRowTop[square.dataset.x].eaten = true;
+    }
+
+    if ((square.dataset.y == 7) && 
+    (boardArray[selectedPiece.y][selectedPiece.x].animal.herbivore == true) &&
+    (boardArray[selectedPiece.y][selectedPiece.x].player == "top")
+        ) {
+            treeRowBottom[square.dataset.x].eaten = true;
     }
     
     boardArray[square.dataset.y][square.dataset.x] = boardArray[selectedPiece.y][selectedPiece.x];
