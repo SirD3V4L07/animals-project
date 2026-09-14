@@ -57,5 +57,9 @@ So development will be:
 7) Create resources and capture resource mechanic
 8) Create reproduction mechanic
 9) Define win states: All resources taken/All herbivores captured
+10) Create interface with piece zoom on hover, power information, lives etc
 10) Create AI opponent and turns
+11) Write down some rules and instructions on the screen
 
+
+As for reproduction, let's have two units of the same species reach the opposite end of the board after at least one having eaten to trigger reproduction. This will create X copies of that unit or give them X lives. To be decided.

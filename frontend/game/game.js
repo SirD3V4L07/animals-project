@@ -102,6 +102,12 @@ async function main() {
 function createBoard() {
     gameBoard.innerHTML = "";
     for (let i = 0; i < 8; i++) {
+        const treecell = document.createElement('div');
+        treecell.classList.add('treecell');
+        gameBoard.append(treecell);
+    }
+
+    for (let i = 0; i < 8; i++) {
         
         for (let j = 0; j < 8; j++) {
             const currentSquare = boardArray[i][j];
@@ -141,6 +147,12 @@ function createBoard() {
         }
         toggle = !toggle;
     };
+
+    for (let i = 0; i < 8; i++) {
+        const treecell = document.createElement('div');
+        treecell.classList.add('treecell');
+        gameBoard.append(treecell);
+    }
 };
 
 function clearHighlights() {

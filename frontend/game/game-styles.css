@@ -59,3 +59,23 @@ body {
     opacity:1;
     cursor:pointer;
 }
+
+/* .treerow {
+    width:70vw;
+    height:20px;
+    background-color: pink;
+    display: flex;
+} */
+
+.treecell {
+    background-image: url(../assets/tree.png);
+    background-color: rgb(105, 69, 48);
+    display: flex;
+    width:5vw;
+    height:5vw;
+    min-width:40px;
+    min-height:40px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
