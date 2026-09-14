@@ -312,29 +312,30 @@ function clickSquare(square) {
 }
 
 function movePiece(square) {
+    const selectedPiece = boardArray[selectedPiece.y][selectedPiece.x];
     const clickedSquare = boardArray[square.dataset.y][square.dataset.x];
     if (clickedSquare != null) {
-        let point = boardArray[selectedPiece.y][selectedPiece.x].player;
+        let point = selectedPiece.player;
         gameScore[point] += 1;
         console.log(gameScore);
     }
 
     if ((square.dataset.y == 0) && 
-    (boardArray[selectedPiece.y][selectedPiece.x].animal.herbivore == true) &&
-    (boardArray[selectedPiece.y][selectedPiece.x].player == "bottom")
+    (selectedPiece.animal.herbivore == true) &&
+    (selectedPiece.player == "bottom")
         ) {
             treeRowTop[square.dataset.x].eaten = true;
     }
 
     if ((square.dataset.y == 7) && 
-    (boardArray[selectedPiece.y][selectedPiece.x].animal.herbivore == true) &&
-    (boardArray[selectedPiece.y][selectedPiece.x].player == "top")
+    (selectedPiece.animal.herbivore == true) &&
+    (selectedPiece.player == "top")
         ) {
             treeRowBottom[square.dataset.x].eaten = true;
     }
     
-    boardArray[square.dataset.y][square.dataset.x] = boardArray[selectedPiece.y][selectedPiece.x];
-    boardArray[selectedPiece.y][selectedPiece.x] = null;
+    clickedSquare = selectedPiece;
+    selectedPiece = null;
     
     
     clearHighlights();
