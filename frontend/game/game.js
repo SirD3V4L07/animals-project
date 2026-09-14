@@ -11,8 +11,6 @@ let boardArray =
 let treeRowTop = [createTree(),createTree(),createTree(),createTree(),createTree(),createTree(),createTree(),createTree()];
 let treeRowBottom = [createTree(),createTree(),createTree(),createTree(),createTree(),createTree(),createTree(),createTree()];
 
-let toggle = true;
-
 let selectedPiece = {
     x: null,
     y: null
@@ -137,7 +135,7 @@ function createBoard() {
             square.dataset.y = i;
 
             //Define square styles to make checkered pattern
-            if (toggle) {
+            if ((i + j) % 2 === 0) {
                 square.classList.add('even-square');
             } else {
                 square.classList.add('odd-square');
@@ -159,9 +157,7 @@ function createBoard() {
                 square.appendChild(piece);                
             }            
             gameBoard.append(square);
-            toggle = !toggle;    
         }
-        toggle = !toggle;
     };
 
     for (let i = 0; i < 8; i++) {
