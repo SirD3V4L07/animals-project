@@ -312,35 +312,62 @@ function clickSquare(square) {
 }
 
 function movePiece(square) {
-    const selectedPiece = boardArray[selectedPiece.y][selectedPiece.x];
-    const clickedSquare = boardArray[square.dataset.y][square.dataset.x];
+    let activePiece = boardArray[selectedPiece.y][selectedPiece.x];
+    let clickedSquare = boardArray[square.dataset.y][square.dataset.x];
     if (clickedSquare != null) {
-        let point = selectedPiece.player;
+        let point = activePiece.player;
         gameScore[point] += 1;
         console.log(gameScore);
     }
 
     if ((square.dataset.y == 0) && 
-    (selectedPiece.animal.herbivore == true) &&
-    (selectedPiece.player == "bottom")
+    (activePiece.animal.herbivore == true) &&
+    (activePiece.player == "bottom")
         ) {
             treeRowTop[square.dataset.x].eaten = true;
     }
 
     if ((square.dataset.y == 7) && 
-    (selectedPiece.animal.herbivore == true) &&
-    (selectedPiece.player == "top")
+    (activePiece.animal.herbivore == true) &&
+    (activePiece.player == "top")
         ) {
             treeRowBottom[square.dataset.x].eaten = true;
     }
     
-    clickedSquare = selectedPiece;
-    selectedPiece = null;
+    boardArray[square.dataset.y][square.dataset.x] = boardArray[selectedPiece.y][selectedPiece.x];
+    boardArray[selectedPiece.y][selectedPiece.x] = null;
     
     
     clearHighlights();
     clearSelection();
     createBoard();
+    checkWinner();
+}
+
+function checkWinner() {
+    // Check for harvest win
+    let harvestBottom = 0;
+    let harvestTop = 0;
+    for (let i = 0; i < 8; i++) {
+        if (treeRowBottom[i].eaten == true) {
+            harvestBottom += 1;
+        }
+        if (treeRowTop[i].eaten == true) {
+            harvestTop += 1;
+        }
+    }
+    if (harvestBottom > 7) {
+        announceWinner("top player");
+    }
+    if (harvestTop > 7) {
+        announceWinner("bottom player");
+    }
+    
+    // Check for extinction win
+}
+
+function announceWinner(winner) {
+    console.log("The winner is " + winner + "!");
 }
 
 main();
