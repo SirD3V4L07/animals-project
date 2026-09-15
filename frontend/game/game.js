@@ -364,6 +364,26 @@ function checkWinner() {
     }
     
     // Check for extinction win
+    let aliveHerbivoresTop = 0;
+    let aliveHerbivoresBottom = 0;
+
+    for (let i = 0; i < 8; i++) {        
+        for (let j = 0; j < 8; j++) {
+            if ((boardArray[i][j]?.animal.herbivore) && (boardArray[i][j].player == "top")) {
+                aliveHerbivoresTop += 1;
+                console.log("Surviving top herbivores: " + aliveHerbivoresTop);
+            } else if ((boardArray[i][j]?.animal.herbivore) && (boardArray[i][j].player == "bottom")) {
+                aliveHerbivoresBottom += 1;
+                console.log("Surviving bottom herbivores: " + aliveHerbivoresBottom);
+            }            
+        }
+    };
+    if (aliveHerbivoresTop < 1) {
+        announceWinner("bottom player");
+    }
+    if (aliveHerbivoresBottom < 1) {
+        announceWinner("top player");
+    }
 }
 
 function announceWinner(winner) {
