@@ -22,6 +22,15 @@ let gameScore = {
 };
 
 const gameBoard = document.querySelector("#gameboard");
+const animalPicture = document.querySelector("#animal-picture");
+const animalName = document.querySelector("#stat-name");
+const animalTaxonomy = document.querySelector("#stat-taxonomy");
+const animalPower = document.querySelector("#stat-power");
+const animalSpeed = document.querySelector("#stat-speed");
+const animalDiet = document.querySelector("#stat-diet");
+
+
+
 
 async function loadAnimal(id) {
     const response = await fetch(`/backend/data/${id}.json`);
@@ -105,7 +114,23 @@ async function main() {
     
     await setAnimals();
     createBoard();
+    createInfoTile();
     addClickBehavior();
+    
+}
+
+function createInfoTile() {
+    animalPicture.style.backgroundImage = `url(${boardArray[0][0].animal.image})`;
+    animalName.innerHTML = boardArray[0][0].animal.name;
+    animalTaxonomy.innerHTML = boardArray[0][0].animal.scientificName;
+    animalPower.innerHTML = boardArray[0][0].animal.power;
+    animalSpeed.innerHTML = boardArray[0][0].animal.speed;
+    if (boardArray[0][0].animal.carnivore) {
+        animalDiet.innerHTML = "Carnivore";
+    } else if (boardArray[0][0].animal.herbivore) {
+        animalDiet.innerHTML = "Herbivore";
+    };
+    
 }
 
 function createBoard() {
@@ -141,8 +166,7 @@ function createBoard() {
                 square.classList.add('odd-square');
             }
 
-            //Append squares and piece elements to board element
-            
+            //Append squares and piece elements to board element            
             if (currentSquare != null) {
                 currentSquare.x = j;
                 currentSquare.y = i;

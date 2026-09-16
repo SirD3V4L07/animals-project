@@ -56,7 +56,7 @@ So development will be:
 6) Condition capture on power being superior to target (Done)
 7) Create resources and capture resource mechanic (Done)
 8) Create reproduction mechanic (I'm postponing this for now)
-9) Define win states: All resources taken/All herbivores captured
+9) Define win states: All resources taken/All herbivores captured (Done)
 10) Create interface with piece zoom on hover, power information, lives etc
 10) Create AI opponent and turns
 11) Write down some rules and instructions on the screen
