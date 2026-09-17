@@ -114,23 +114,8 @@ async function main() {
     
     await setAnimals();
     createBoard();
-    createInfoTile();
     addClickBehavior();
     addHoverBehavior();
-}
-
-function createInfoTile() {
-    animalPicture.style.backgroundImage = `url(${boardArray[0][0].animal.image})`;
-    animalName.innerHTML = boardArray[0][0].animal.name;
-    animalTaxonomy.innerHTML = boardArray[0][0].animal.scientificName;
-    animalPower.innerHTML = boardArray[0][0].animal.power;
-    animalSpeed.innerHTML = boardArray[0][0].animal.speed;
-    if (boardArray[0][0].animal.carnivore) {
-        animalDiet.innerHTML = "Carnivore";
-    } else if (boardArray[0][0].animal.herbivore) {
-        animalDiet.innerHTML = "Herbivore";
-    };
-    
 }
 
 function createBoard() {
