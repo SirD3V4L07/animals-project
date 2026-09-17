@@ -116,7 +116,7 @@ async function main() {
     createBoard();
     createInfoTile();
     addClickBehavior();
-    
+    addHoverBehavior();
 }
 
 function createInfoTile() {
@@ -221,6 +221,32 @@ function addClickBehavior() {
         }
     });
 }
+
+function addHoverBehavior() {
+    gameBoard.addEventListener("mouseover", (e) => {
+        // Find the piece element being hovered
+        const piece = e.target.closest(".piece");
+        if (!piece) return;
+
+        const square = piece.closest(".square");
+        if (!square) return;
+
+        const xCoor = square.dataset.x;
+        const yCoor = square.dataset.y;
+        
+        const currentAnimal = boardArray[yCoor]?.[xCoor]?.animal;
+        if (currentAnimal) {
+            animalPicture.style.backgroundImage = `url(${currentAnimal.image})`;
+            // Optional: update the rest of your info tile stats on hover
+            animalName.innerHTML = currentAnimal.name;
+            animalTaxonomy.innerHTML = currentAnimal.scientificName;
+            animalPower.innerHTML = currentAnimal.power;
+            animalSpeed.innerHTML = currentAnimal.speed;
+            animalDiet.innerHTML = currentAnimal.carnivore ? "Carnivore" : "Herbivore";
+        }
+    });
+}
+    
 
 function highlightMoves(square,x,y) {
     selectedPiece.x = x;
